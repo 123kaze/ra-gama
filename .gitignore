@@ -1,0 +1,43 @@
+# environments (see environment/)
+.condaenv/
+.condaenv_gama/
+__pycache__/
+*.pyc
+.DS_Store
+*.nbi
+*.nbc
+
+# datasets, caches and trained models (see data/README.md)
+LBF-Gama/
+learned_adaptive_hybrid/cache/
+learned_adaptive_hybrid/external/mawi/
+windows_research/cache/
+windows_research/data/*
+!windows_research/data/*.json
+windows_research/round2_backlog/cache/
+windows_research/round2_backlog/data/*
+!windows_research/round2_backlog/data/*.json
+windows_research/round4_ra_plbf/data/*
+!windows_research/round4_ra_plbf/data/*.json
+original_baselines/gama/data/
+original_baselines/plbf/data/
+# per-key FP flags of the original baselines; the ones the reports use are committed explicitly
+original_baselines/**/*.npy
+
+# regenerated from the submodules + our patches by scripts/setup_third_party.sh
+original_baselines/gama/run_gama_plbf_ada.py
+original_baselines/stacked/overlay/
+learned_adaptive_hybrid/external/aqf_port/include/
+learned_adaptive_hybrid/external/aqf_port/src/
+learned_adaptive_hybrid/external/aqf_port/UPSTREAM_README.md
+learned_adaptive_hybrid/external/stacked_port/patch/
+
+# build outputs
+original_baselines/**/obj/
+original_baselines/stacked/stacked_orig_driver
+original_baselines/aqf/aqf_orig_driver
+original_baselines/aqf/test_e2e_localmap
+original_baselines/aqf/adapt_demo
+original_baselines/skiqf/skiqf_orig_driver
+learned_adaptive_hybrid/external/aqf_port/aqf_driver
+learned_adaptive_hybrid/external/stacked_port/stacked_driver

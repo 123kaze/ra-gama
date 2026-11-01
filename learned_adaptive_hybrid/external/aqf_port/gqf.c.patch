@@ -1,0 +1,52 @@
+--- a/gqf.c
++++ b/gqf.c
+@@ -57,9 +57,7 @@
+ 
+ static __inline__ unsigned long long rdtsc(void)
+ {
+-	unsigned hi, lo;
+-	__asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
+-	return ( (unsigned long long)lo)|( ((unsigned long long)hi)<<32 );
++	return 0;  /* ARM 移植：rdtsc 只用于计时日志 */
+ }
+ 
+ #ifdef LOG_WAIT_TIME
+@@ -262,11 +260,7 @@
+ 
+ static inline int popcnt(uint64_t val)
+ {
+-	asm("popcnt %[val], %[val]"
+-			: [val] "+r" (val)
+-			:
+-			: "cc");
+-	return val;
++	return __builtin_popcountll(val);  /* ARM 移植 */
+ }
+ 
+ static inline int64_t bitscanreverse(uint64_t val)
+@@ -274,11 +268,7 @@
+ 	if (val == 0) {
+ 		return -1;
+ 	} else {
+-		asm("bsr %[val], %[val]"
+-				: [val] "+r" (val)
+-				:
+-				: "cc");
+-		return val;
++		return 63 - __builtin_clzll(val);  /* ARM 移植 */
+ 	}
+ }
+ 
+@@ -294,11 +284,7 @@
+ // Bits are numbered from 0
+ static inline int bitrank(uint64_t val, int pos) {
+ 	val = val & ((2ULL << pos) - 1);
+-	asm("popcnt %[val], %[val]"
+-			: [val] "+r" (val)
+-			:
+-			: "cc");
+-	return val;
++	return __builtin_popcountll(val);  /* ARM 移植 */
+ }
+ 
+ /**

@@ -1,0 +1,27 @@
+[submodule "original_baselines/repos/HarvardDASlab__stackedfilters"]
+	path = original_baselines/repos/HarvardDASlab__stackedfilters
+	url = https://bitbucket.org/HarvardDASlab/stackedfilters
+[submodule "original_baselines/repos/Spatio-Temporal-Lab__LBF-Gama"]
+	path = original_baselines/repos/Spatio-Temporal-Lab__LBF-Gama
+	url = https://github.com/Spatio-Temporal-Lab/LBF-Gama
+[submodule "original_baselines/repos/atsukisato__FastPLBF"]
+	path = original_baselines/repos/atsukisato__FastPLBF
+	url = https://github.com/atsukisato/FastPLBF
+[submodule "original_baselines/repos/djslzx__telescoping-filter"]
+	path = original_baselines/repos/djslzx__telescoping-filter
+	url = https://github.com/djslzx/telescoping-filter
+[submodule "original_baselines/repos/kapilvaidya24__PLBF"]
+	path = original_baselines/repos/kapilvaidya24__PLBF
+	url = https://github.com/kapilvaidya24/PLBF
+[submodule "original_baselines/repos/saltsystemslab__SkiRentalAdaptiveQF"]
+	path = original_baselines/repos/saltsystemslab__SkiRentalAdaptiveQF
+	url = https://github.com/saltsystemslab/SkiRentalAdaptiveQF
+[submodule "original_baselines/repos/saltsystemslab__adaptiveqf"]
+	path = original_baselines/repos/saltsystemslab__adaptiveqf
+	url = https://github.com/saltsystemslab/adaptiveqf
+[submodule "original_baselines/repos/splatlab__adaptiveqf"]
+	path = original_baselines/repos/splatlab__adaptiveqf
+	url = https://github.com/splatlab/adaptiveqf
+[submodule "learned_adaptive_hybrid/external/How-to-Train-Your-Filter"]
+	path = learned_adaptive_hybrid/external/How-to-Train-Your-Filter
+	url = https://github.com/saltsystemslab/How-to-Train-Your-Filter

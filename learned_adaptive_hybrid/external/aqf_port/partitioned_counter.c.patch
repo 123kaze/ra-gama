@@ -1,0 +1,22 @@
+--- a/partitioned_counter.c
++++ b/partitioned_counter.c
+@@ -3,8 +3,8 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <sched.h>
+-#include <sys/sysinfo.h>
+-#include <linux/unistd.h>
++/* ARM 移植：macOS 没有 sys/sysinfo.h，本文件也不用它 */
++/* ARM 移植：去掉 linux/unistd.h */
+ #include <sys/syscall.h>
+ #include <errno.h>
+ 
+@@ -45,7 +45,7 @@
+ }
+ 	
+ void pc_add(pc_t *pc, int64_t count) {
+-	int cpuid = sched_getcpu();
++	int cpuid = 0;  /* ARM 移植：macOS 没有 sched_getcpu，单线程运行 */
+ 	uint32_t counter_id = cpuid % pc->num_counters;
+ 	int64_t cur_count =
+ 		__atomic_add_fetch(&pc->local_counters[counter_id].counter, count,

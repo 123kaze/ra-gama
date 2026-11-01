@@ -1,0 +1,43 @@
+--- a/StackedFilter.h
++++ b/StackedFilter.h
+@@ -1,3 +1,4 @@
++#include <cassert>
+ #pragma once
+ 
+ /*
+@@ -14,12 +15,12 @@
+ #include <vector>
+ #include <random>
+ #include "BloomFilterLayer.h"
+-#include "../QuotientFilter/CQFilterLayer.h"
+-#include "../CuckooFilter/CuckooFilterLayer.h"
++// 移植：只用 Bloom 层，去掉 QF 层
++// 移植：只用 Bloom 层，去掉 Cuckoo 层
+ #include "Common.h"
+ #include "InterfaceAMQ.h"
+ #include "InterfaceElement.h"
+-#include "../Optimization/OptimizationRoutines.h"
++#include "OptimizationRoutines.h"
+ 
+ 
+ /*
+@@ -115,7 +116,7 @@
+             layer_fprs.push_back(fpr);
+         }
+     }
+-    num_chosen_negatives = std::min(negatives.size(), num_chosen_negatives);
++    num_chosen_negatives = std::min<uint64_t>(negatives.size(), num_chosen_negatives);  // 移植：macOS 上 size_t ≠ uint64_t
+     std::vector<element_type> chosen_negatives(negatives.begin(), negatives.begin() + num_chosen_negatives);
+     InitStackedAMQ(layer_fprs, integral_parameters, positives, chosen_negatives, insert_capacity);
+ }
+@@ -313,8 +314,6 @@
+ template
+ class StackedFilter<BloomFilterLayer, StringElement>;
+ 
+-template
+-class StackedFilter<CQFilterLayer, IntElement>;
++// 移植：去掉 CQFilterLayer 实例化
+ 
+-template
+-class StackedFilter<CuckooFilterLayer, IntElement>;
++// 移植：去掉 CuckooFilterLayer 实例化

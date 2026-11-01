@@ -1,0 +1,17 @@
+/cache/
+/data/*
+!/data/*-source.json
+!/data/*-download.json
+/external/
+/tmp/
+__pycache__/
+*.nbc
+*.nbi
+*.pyc
+*.db*
+*.bin
+*.exe
+*.dll
+*.so
+*.o
+!/figures/*.png

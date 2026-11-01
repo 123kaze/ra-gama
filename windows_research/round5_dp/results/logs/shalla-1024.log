@@ -1,0 +1,77 @@
+shalla setup ready in 2.3s; members=2926705, neg_val=97747, neg_test=783073
+shalla 1024KiB uniform-1万 s0 146.8s oracle=572 FastPLBF48=422969 Gama=422969 Gama(original)=500523 Gama+10%=645 LearnGrid=572 RA4=587 RA4-noRepeat=575 RA4-noSA=20071 RA4-noGT=587 RA4-mix0.5=587 RA4-mix1=587 RA4-Table=95979 RA-global=588
+shalla 1024KiB uniform-1万 s1 78.6s oracle=571 FastPLBF48=467946 Gama=467946 Gama(original)=513079 Gama+10%=680 LearnGrid=571 RA4=567 RA4-noRepeat=596 RA4-noSA=26920 RA4-noGT=567 RA4-mix0.5=567 RA4-mix1=567 RA4-Table=85474 RA-global=622
+shalla 1024KiB uniform-1万 s2 83.3s oracle=593 FastPLBF48=424397 Gama=424397 Gama(original)=537958 Gama+10%=678 LearnGrid=593 RA4=611 RA4-noRepeat=609 RA4-noSA=31165 RA4-noGT=611 RA4-mix0.5=611 RA4-mix1=611 RA4-Table=104758 RA-global=602
+shalla 1024KiB uniform-1万 s3 7.2s oracle= FastPLBF48=432208 Gama=432208 Gama(original)=524382 Gama+10%=695 LearnGrid=578 RA4=614
+shalla 1024KiB uniform-1万 s4 6.8s oracle= FastPLBF48=386922 Gama=386922 Gama(original)=506874 Gama+10%=663 LearnGrid=573 RA4=575
+shalla 1024KiB zipf0.8-1万 s0 146.5s oracle=572 FastPLBF48=352237 Gama=352237 Gama(original)=374611 Gama+10%=645 LearnGrid=572 RA4=608 RA4-noRepeat=648 RA4-noSA=9238 RA4-noGT=608 RA4-mix0.5=608 RA4-mix1=608 RA4-Table=42967 RA-global=588
+shalla 1024KiB zipf0.8-1万 s1 79.1s oracle=571 FastPLBF48=454615 Gama=454615 Gama(original)=421740 Gama+10%=680 LearnGrid=571 RA4=637 RA4-noRepeat=629 RA4-noSA=12701 RA4-noGT=637 RA4-mix0.5=637 RA4-mix1=637 RA4-Table=38644 RA-global=622
+shalla 1024KiB zipf0.8-1万 s2 78.2s oracle=593 FastPLBF48=361295 Gama=361295 Gama(original)=458742 Gama+10%=678 LearnGrid=593 RA4=612 RA4-noRepeat=616 RA4-noSA=16030 RA4-noGT=612 RA4-mix0.5=612 RA4-mix1=612 RA4-Table=48332 RA-global=602
+shalla 1024KiB zipf0.8-1万 s3 8.5s oracle= FastPLBF48=431682 Gama=431682 Gama(original)=494999 Gama+10%=695 LearnGrid=578 RA4=607
+shalla 1024KiB zipf0.8-1万 s4 8.5s oracle= FastPLBF48=359278 Gama=359278 Gama(original)=447868 Gama+10%=663 LearnGrid=573 RA4=608
+shalla 1024KiB zipf1.0-1万 s0 140.5s oracle=572 FastPLBF48=291199 Gama=291199 Gama(original)=287696 Gama+10%=645 LearnGrid=572 RA4=603 RA4-noRepeat=728 RA4-noSA=4753 RA4-noGT=603 RA4-mix0.5=603 RA4-mix1=603 RA4-Table=21757 RA-global=588
+shalla 1024KiB zipf1.0-1万 s1 74.8s oracle=571 FastPLBF48=388846 Gama=388846 Gama(original)=324977 Gama+10%=680 LearnGrid=571 RA4=636 RA4-noRepeat=628 RA4-noSA=6457 RA4-noGT=636 RA4-mix0.5=636 RA4-mix1=636 RA4-Table=19567 RA-global=622
+shalla 1024KiB zipf1.0-1万 s2 67.3s oracle=593 FastPLBF48=287898 Gama=287898 Gama(original)=347171 Gama+10%=678 LearnGrid=593 RA4=623 RA4-noRepeat=684 RA4-noSA=8276 RA4-noGT=623 RA4-mix0.5=623 RA4-mix1=623 RA4-Table=24808 RA-global=602
+shalla 1024KiB zipf1.0-1万 s3 6.6s oracle= FastPLBF48=444668 Gama=444668 Gama(original)=479542 Gama+10%=695 LearnGrid=578 RA4=635
+shalla 1024KiB zipf1.0-1万 s4 6.9s oracle= FastPLBF48=294862 Gama=294862 Gama(original)=354991 Gama+10%=663 LearnGrid=573 RA4=607
+shalla 1024KiB zipf1.2-1万 s0 116.3s oracle=572 FastPLBF48=214878 Gama=214878 Gama(original)=193189 Gama+10%=645 LearnGrid=572 RA4=605 RA4-noRepeat=993 RA4-noSA=2277 RA4-noGT=605 RA4-mix0.5=605 RA4-mix1=605 RA4-Table=7481 RA-global=606
+shalla 1024KiB zipf1.2-1万 s1 70.0s oracle=571 FastPLBF48=281024 Gama=281024 Gama(original)=211030 Gama+10%=680 LearnGrid=571 RA4=588 RA4-noRepeat=624 RA4-noSA=2588 RA4-noGT=698 RA4-mix0.5=598 RA4-mix1=598 RA4-Table=9556 RA-global=592
+shalla 1024KiB zipf1.2-1万 s2 62.8s oracle=593 FastPLBF48=196573 Gama=196573 Gama(original)=214306 Gama+10%=678 LearnGrid=593 RA4=589 RA4-noRepeat=790 RA4-noSA=2211 RA4-noGT=592 RA4-mix0.5=629 RA4-mix1=591 RA4-Table=9097 RA-global=613
+shalla 1024KiB zipf1.2-1万 s3 6.5s oracle= FastPLBF48=439912 Gama=439912 Gama(original)=444182 Gama+10%=695 LearnGrid=601 RA4=590
+shalla 1024KiB zipf1.2-1万 s4 6.5s oracle= FastPLBF48=203489 Gama=203489 Gama(original)=231339 Gama+10%=663 LearnGrid=573 RA4=592
+shalla 1024KiB uniform-10万 s0 217.9s oracle=8143 FastPLBF48=428702 Gama=428702 Gama(original)=509975 Gama+10%=10013 LearnGrid=9324 RA4=8229 RA4-noRepeat=8103 RA4-noSA=29561 RA4-noGT=8288 RA4-mix0.5=8229 RA4-mix1=8229 RA4-Table=102638 RA-global=8143
+shalla 1024KiB uniform-10万 s1 130.2s oracle=7910 FastPLBF48=425965 Gama=425965 Gama(original)=495726 Gama+10%=9266 LearnGrid=9266 RA4=8676 RA4-noRepeat=8144 RA4-noSA=26448 RA4-noGT=8676 RA4-mix0.5=8676 RA4-mix1=8676 RA4-Table=103950 RA-global=8261
+shalla 1024KiB uniform-10万 s2 139.9s oracle=8015 FastPLBF48=426009 Gama=426009 Gama(original)=506796 Gama+10%=9570 LearnGrid=9095 RA4=7817 RA4-noRepeat=7812 RA4-noSA=27434 RA4-noGT=7817 RA4-mix0.5=7817 RA4-mix1=7817 RA4-Table=104335 RA-global=8015
+shalla 1024KiB uniform-10万 s3 16.2s oracle= FastPLBF48=423389 Gama=423389 Gama(original)=505805 Gama+10%=8721 LearnGrid=8721 RA4=7813
+shalla 1024KiB uniform-10万 s4 17.2s oracle= FastPLBF48=437131 Gama=437131 Gama(original)=506713 Gama+10%=9184 LearnGrid=8694 RA4=7729
+shalla 1024KiB zipf0.8-10万 s0 229.8s oracle=7654 FastPLBF48=402246 Gama=402246 Gama(original)=472809 Gama+10%=8050 LearnGrid=7801 RA4=8310 RA4-noRepeat=8458 RA4-noSA=15016 RA4-noGT=7940 RA4-mix0.5=8607 RA4-mix1=8424 RA4-Table=44309 RA-global=8221
+shalla 1024KiB zipf0.8-10万 s1 127.9s oracle=7604 FastPLBF48=415495 Gama=415495 Gama(original)=460996 Gama+10%=7604 LearnGrid=7604 RA4=7978 RA4-noRepeat=7617 RA4-noSA=13818 RA4-noGT=7507 RA4-mix0.5=7607 RA4-mix1=7800 RA4-Table=45093 RA-global=7843
+shalla 1024KiB zipf0.8-10万 s2 128.4s oracle=7507 FastPLBF48=460588 Gama=460588 Gama(original)=649021 Gama+10%=7874 LearnGrid=7507 RA4=7914 RA4-noRepeat=8176 RA4-noSA=14622 RA4-noGT=7737 RA4-mix0.5=7902 RA4-mix1=8359 RA4-Table=47932 RA-global=7874
+shalla 1024KiB zipf0.8-10万 s3 18.5s oracle= FastPLBF48=519914 Gama=519914 Gama(original)=438985 Gama+10%=7294 LearnGrid=7294 RA4=7872
+shalla 1024KiB zipf0.8-10万 s4 17.1s oracle= FastPLBF48=408048 Gama=408048 Gama(original)=456611 Gama+10%=7541 LearnGrid=7325 RA4=8018
+shalla 1024KiB zipf1.0-10万 s0 206.6s oracle=7003 FastPLBF48=358722 Gama=358722 Gama(original)=408982 Gama+10%=7156 LearnGrid=7003 RA4=7084 RA4-noRepeat=7578 RA4-noSA=10079 RA4-noGT=7081 RA4-mix0.5=7121 RA4-mix1=7044 RA4-Table=17119 RA-global=7102
+shalla 1024KiB zipf1.0-10万 s1 114.8s oracle=6924 FastPLBF48=349232 Gama=349232 Gama(original)=375409 Gama+10%=6924 LearnGrid=7065 RA4=6928 RA4-noRepeat=7203 RA4-noSA=9605 RA4-noGT=7251 RA4-mix0.5=6955 RA4-mix1=7019 RA4-Table=17067 RA-global=7065
+shalla 1024KiB zipf1.0-10万 s2 117.5s oracle=6897 FastPLBF48=502072 Gama=502072 Gama(original)=963467 Gama+10%=7068 LearnGrid=6897 RA4=7266 RA4-noRepeat=8009 RA4-noSA=9559 RA4-noGT=7091 RA4-mix0.5=7277 RA4-mix1=7324 RA4-Table=16356 RA-global=7068
+shalla 1024KiB zipf1.0-10万 s3 16.8s oracle= FastPLBF48=876522 Gama=876522 Gama(original)=322498 Gama+10%=6783 LearnGrid=6783 RA4=6855
+shalla 1024KiB zipf1.0-10万 s4 15.8s oracle= FastPLBF48=352798 Gama=352798 Gama(original)=354611 Gama+10%=6868 LearnGrid=6773 RA4=7306
+shalla 1024KiB zipf1.2-10万 s0 164.6s oracle=6164 FastPLBF48=282295 Gama=282295 Gama(original)=305587 Gama+10%=6317 LearnGrid=6215 RA4=6344 RA4-noRepeat=7805 RA4-noSA=6303 RA4-noGT=6352 RA4-mix0.5=6396 RA4-mix1=6281 RA4-Table=7067 RA-global=6260
+shalla 1024KiB zipf1.2-10万 s1 93.4s oracle=6205 FastPLBF48=233372 Gama=233372 Gama(original)=247666 Gama+10%=6216 LearnGrid=6353 RA4=6567 RA4-noRepeat=7824 RA4-noSA=6424 RA4-noGT=6438 RA4-mix0.5=6350 RA4-mix1=6336 RA4-Table=6871 RA-global=6484
+shalla 1024KiB zipf1.2-10万 s2 93.5s oracle=6142 FastPLBF48=515766 Gama=515766 Gama(original)=1406660 Gama+10%=6261 LearnGrid=6165 RA4=6188 RA4-noRepeat=7750 RA4-noSA=6301 RA4-noGT=6296 RA4-mix0.5=6335 RA4-mix1=6341 RA4-Table=6942 RA-global=6302
+shalla 1024KiB zipf1.2-10万 s3 12.8s oracle= FastPLBF48=1613500 Gama=1613500 Gama(original)=175659 Gama+10%=6120 LearnGrid=6255 RA4=6354
+shalla 1024KiB zipf1.2-10万 s4 12.6s oracle= FastPLBF48=271268 Gama=271268 Gama(original)=219719 Gama+10%=6140 LearnGrid=6286 RA4=6259
+shalla 1024KiB uniform-全部 s0 280.5s oracle=167586 FastPLBF48=426026 Gama=426026 Gama(original)=501844 Gama+10%=282527 LearnGrid=196152 RA4=164575 RA4-noRepeat=166163 RA4-noSA=165986 RA4-noGT=166103 RA4-mix0.5=164562 RA4-mix1=163497 RA4-Table=164930 RA-global=167586
+shalla 1024KiB uniform-全部 s1 146.6s oracle=168057 FastPLBF48=425676 Gama=425676 Gama(original)=502446 Gama+10%=282188 LearnGrid=197241 RA4=168288 RA4-noRepeat=165450 RA4-noSA=164441 RA4-noGT=166274 RA4-mix0.5=165423 RA4-mix1=165340 RA4-Table=166136 RA-global=168057
+shalla 1024KiB uniform-全部 s2 147.2s oracle=167689 FastPLBF48=425843 Gama=425843 Gama(original)=500953 Gama+10%=282634 LearnGrid=198076 RA4=164681 RA4-noRepeat=163852 RA4-noSA=167117 RA4-noGT=164535 RA4-mix0.5=164703 RA4-mix1=166876 RA4-Table=166330 RA-global=167689
+shalla 1024KiB uniform-全部 s3 25.2s oracle= FastPLBF48=426319 Gama=426319 Gama(original)=502293 Gama+10%=282073 LearnGrid=196539 RA4=164925
+shalla 1024KiB uniform-全部 s4 29.2s oracle= FastPLBF48=426729 Gama=426729 Gama(original)=501669 Gama+10%=281632 LearnGrid=196183 RA4=165821
+shalla 1024KiB zipf0.8-全部 s0 255.5s oracle=97278 FastPLBF48=401592 Gama=401592 Gama(original)=458454 Gama+10%=137226 LearnGrid=101501 RA4=100789 RA4-noRepeat=102902 RA4-noSA=100171 RA4-noGT=95453 RA4-mix0.5=101675 RA4-mix1=100523 RA4-Table=99009 RA-global=101501
+shalla 1024KiB zipf0.8-全部 s1 393.9s oracle=96885 FastPLBF48=420298 Gama=420298 Gama(original)=475276 Gama+10%=136644 LearnGrid=101032 RA4=101534 RA4-noRepeat=102134 RA4-noSA=101674 RA4-noGT=95640 RA4-mix0.5=102388 RA4-mix1=101040 RA4-Table=99333 RA-global=101032
+shalla 1024KiB zipf0.8-全部 s2 377.1s oracle=97405 FastPLBF48=441029 Gama=441029 Gama(original)=451525 Gama+10%=136339 LearnGrid=102275 RA4=100555 RA4-noRepeat=101672 RA4-noSA=102367 RA4-noGT=96248 RA4-mix0.5=102207 RA4-mix1=101541 RA4-Table=101624 RA-global=101812
+shalla 1024KiB zipf0.8-全部 s3 69.1s oracle= FastPLBF48=405204 Gama=405204 Gama(original)=496101 Gama+10%=137724 LearnGrid=101584 RA4=101604
+shalla 1024KiB zipf0.8-全部 s4 72.4s oracle= FastPLBF48=427385 Gama=427385 Gama(original)=469473 Gama+10%=136443 LearnGrid=101178 RA4=102870
+shalla 1024KiB zipf1.0-全部 s0 590.9s oracle=54409 FastPLBF48=342319 Gama=342319 Gama(original)=352067 Gama+10%=61314 LearnGrid=61314 RA4=61470 RA4-noRepeat=73846 RA4-noSA=62014 RA4-noGT=55243 RA4-mix0.5=61705 RA4-mix1=61958 RA4-Table=57120 RA-global=61496
+shalla 1024KiB zipf1.0-全部 s1 318.6s oracle=54765 FastPLBF48=381472 Gama=381472 Gama(original)=411532 Gama+10%=61426 LearnGrid=60827 RA4=61105 RA4-noRepeat=63248 RA4-noSA=61423 RA4-noGT=54329 RA4-mix0.5=61181 RA4-mix1=60630 RA4-Table=57730 RA-global=60827
+shalla 1024KiB zipf1.0-全部 s2 383.2s oracle=54573 FastPLBF48=555718 Gama=555718 Gama(original)=353034 Gama+10%=61145 LearnGrid=61148 RA4=61113 RA4-noRepeat=64844 RA4-noSA=61993 RA4-noGT=54695 RA4-mix0.5=61784 RA4-mix1=61882 RA4-Table=57523 RA-global=61148
+shalla 1024KiB zipf1.0-全部 s3 60.2s oracle= FastPLBF48=346608 Gama=346608 Gama(original)=444819 Gama+10%=61787 LearnGrid=61408 RA4=61422
+shalla 1024KiB zipf1.0-全部 s4 52.1s oracle= FastPLBF48=446271 Gama=446271 Gama(original)=383529 Gama+10%=61759 LearnGrid=61368 RA4=62188
+shalla 1024KiB zipf1.2-全部 s0 397.4s oracle=19485 FastPLBF48=241059 Gama=241059 Gama(original)=204868 Gama+10%=19485 LearnGrid=21298 RA4=19913 RA4-noRepeat=30719 RA4-noSA=21499 RA4-noGT=19774 RA4-mix0.5=19785 RA4-mix1=19646 RA4-Table=19935 RA-global=19485
+shalla 1024KiB zipf1.2-全部 s1 262.3s oracle=19448 FastPLBF48=285012 Gama=285012 Gama(original)=294278 Gama+10%=19569 LearnGrid=21283 RA4=19878 RA4-noRepeat=20696 RA4-noSA=21626 RA4-noGT=19618 RA4-mix0.5=22000 RA4-mix1=21382 RA4-Table=19953 RA-global=21742
+shalla 1024KiB zipf1.2-全部 s2 262.1s oracle=19699 FastPLBF48=793743 Gama=793743 Gama(original)=215984 Gama+10%=19699 LearnGrid=21618 RA4=21638 RA4-noRepeat=22993 RA4-noSA=21940 RA4-noGT=19636 RA4-mix0.5=21884 RA4-mix1=21813 RA4-Table=20010 RA-global=19702
+shalla 1024KiB zipf1.2-全部 s3 55.3s oracle= FastPLBF48=249543 Gama=249543 Gama(original)=331032 Gama+10%=20102 LearnGrid=21565 RA4=20003
+shalla 1024KiB zipf1.2-全部 s4 48.3s oracle= FastPLBF48=463502 Gama=463502 Gama(original)=247034 Gama+10%=19709 LearnGrid=21132 RA4=19487
+shalla 1024KiB 每key一次 s0 147.6s oracle=33243 FastPLBF48=33440 Gama=33440 Gama(original)=39376 Gama+10%=38603 LearnGrid=33336 RA4=33440 RA4-noRepeat=33440 RA4-noSA=33440 RA4-noGT=38511 RA4-mix0.5=33340 RA4-mix1=33122 RA4-Table=45428 RA-global=33440
+shalla 1024KiB 每key一次 s1 78.3s oracle=33192 FastPLBF48=33286 Gama=33286 Gama(original)=39180 Gama+10%=38529 LearnGrid=33361 RA4=33286 RA4-noRepeat=33286 RA4-noSA=33286 RA4-noGT=38464 RA4-mix0.5=33287 RA4-mix1=33112 RA4-Table=45489 RA-global=33286
+shalla 1024KiB 每key一次 s2 57.4s oracle=33086 FastPLBF48=33319 Gama=33319 Gama(original)=39180 Gama+10%=38608 LearnGrid=33307 RA4=33319 RA4-noRepeat=33319 RA4-noSA=33319 RA4-noGT=38770 RA4-mix0.5=33195 RA4-mix1=33095 RA4-Table=45459 RA-global=33319
+shalla 1024KiB 每key一次 s3 5.2s oracle= FastPLBF48=33286 Gama=33286 Gama(original)=39193 Gama+10%=38491 LearnGrid=33277 RA4=33286
+shalla 1024KiB 每key一次 s4 5.5s oracle= FastPLBF48=33366 Gama=33366 Gama(original)=39347 Gama+10%=38478 LearnGrid=33740 RA4=33366
+shalla 1024KiB 全新对抗 s0 35.3s oracle=14446 FastPLBF48=15265 Gama=15265 Gama(original)=20649 Gama+10%=16565 LearnGrid=16043 RA4=15265 RA4-noRepeat=15265 RA4-noSA=15265 RA4-noGT=27099 RA4-mix0.5=24520 RA4-mix1=27087 RA4-Table=15265 RA-global=15265
+shalla 1024KiB 全新对抗 s1 19.4s oracle=14446 FastPLBF48=15265 Gama=15265 Gama(original)=20649 Gama+10%=16565 LearnGrid=16043 RA4=15265 RA4-noRepeat=15265 RA4-noSA=15265 RA4-noGT=27099 RA4-mix0.5=24520 RA4-mix1=27087 RA4-Table=15265 RA-global=15265
+shalla 1024KiB 全新对抗 s2 18.7s oracle=14446 FastPLBF48=15265 Gama=15265 Gama(original)=20649 Gama+10%=16565 LearnGrid=16043 RA4=15265 RA4-noRepeat=15265 RA4-noSA=15265 RA4-noGT=27099 RA4-mix0.5=24520 RA4-mix1=27087 RA4-Table=15265 RA-global=15265
+shalla 1024KiB 全新对抗 s3 2.6s oracle= FastPLBF48=15265 Gama=15265 Gama(original)=20649 Gama+10%=16565 LearnGrid=16043 RA4=15265
+shalla 1024KiB 全新对抗 s4 2.5s oracle= FastPLBF48=15265 Gama=15265 Gama(original)=20649 Gama+10%=16565 LearnGrid=16043 RA4=15265
+shalla 1024KiB 探测重放10% s0 295.6s oracle=240228 FastPLBF48=1133127 Gama=1133127 Gama(original)=1202312 Gama+10%=620038 LearnGrid=361503 RA4=261659 RA4-noRepeat=263429 RA4-noSA=263166 RA4-noGT=263265 RA4-mix0.5=260325 RA4-mix1=258806 RA4-Table=259671 RA-global=265502
+shalla 1024KiB 探测重放10% s1 160.6s oracle=240376 FastPLBF48=1133447 Gama=1133447 Gama(original)=1202691 Gama+10%=619338 LearnGrid=363516 RA4=265665 RA4-noRepeat=261719 RA4-noSA=258937 RA4-noGT=263952 RA4-mix0.5=261553 RA4-mix1=261003 RA4-Table=262156 RA-global=266434
+shalla 1024KiB 探测重放10% s2 151.7s oracle=240902 FastPLBF48=1133690 Gama=1133690 Gama(original)=1201061 Gama+10%=620320 LearnGrid=363419 RA4=260370 RA4-noRepeat=258655 RA4-noSA=264298 RA4-noGT=259475 RA4-mix0.5=261585 RA4-mix1=264868 RA4-Table=262153 RA-global=265086
+shalla 1024KiB 探测重放10% s3 25.7s oracle= FastPLBF48=1133151 Gama=1133151 Gama(original)=1201554 Gama+10%=619234 LearnGrid=361985 RA4=261209
+shalla 1024KiB 探测重放10% s4 24.6s oracle= FastPLBF48=1133647 Gama=1133647 Gama(original)=1201311 Gama+10%=619510 LearnGrid=361126 RA4=262466
+COMPLETE shalla/1024

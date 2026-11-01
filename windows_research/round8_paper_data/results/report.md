@@ -18,6 +18,9 @@
 | paper_cod 128 | G-LBF(original) | 3 | 133,492 | 5.563309% | 10.360 | 3.438 |
 | paper_cod 128 | G-PLBF(original) | 3 | 92,661 | 3.861668% | 11.149 | 10.461 |
 | paper_cod 128 | RA6 | 3 | 50,809 | 2.117477% | 221.078 | 3.325 |
+| paper_cod 192 | G-LBF(original) | 3 | 91,738 | 3.823202% | 14.869 | 3.791 |
+| paper_cod 192 | G-PLBF(original) | 3 | 55,351 | 2.306766% | 15.989 | 10.873 |
+| paper_cod 192 | RA6 | 3 | 24,442 | 1.018626% | 219.576 | 6.200 |
 | paper_url 64 | G-LBF(original) | 3 | 23,981 | 7.011476% | 0.610 | 0.639 |
 | paper_url 64 | G-PLBF(original) | 3 | 19,092 | 5.582048% | 2.167 | 8.881 |
 | paper_url 64 | RA6 | 3 | 14,468 | 4.230100% | 29.763 | 0.078 |
@@ -50,6 +53,12 @@
 | paper_cod 128 | G-PLBF(original) | zipf | 3 | 213,880 | 2.851733% | 35.150 | 4,687 |
 | paper_cod 128 | RA6 | once | 3 | 38,081 | 2.116045% | 2.694 | 1,497 |
 | paper_cod 128 | RA6 | zipf | 3 | 55,836 | 0.744480% | 6.521 | 869 |
+| paper_cod 192 | G-LBF(original) | once | 3 | 68,696 | 3.817227% | 3.329 | 1,850 |
+| paper_cod 192 | G-LBF(original) | zipf | 3 | 205,933 | 2.745773% | 13.129 | 1,751 |
+| paper_cod 192 | G-PLBF(original) | once | 3 | 41,399 | 2.300416% | 8.694 | 4,831 |
+| paper_cod 192 | G-PLBF(original) | zipf | 3 | 130,965 | 1.746200% | 35.284 | 4,705 |
+| paper_cod 192 | RA6 | once | 3 | 18,341 | 1.019153% | 4.908 | 2,727 |
+| paper_cod 192 | RA6 | zipf | 3 | 19,721 | 0.262947% | 9.874 | 1,317 |
 | paper_url 64 | G-LBF(original) | once | 3 | 17,966 | 7.003770% | 0.543 | 2,118 |
 | paper_url 64 | G-LBF(original) | zipf | 3 | 410,383 | 5.471773% | 15.620 | 2,083 |
 | paper_url 64 | G-PLBF(original) | once | 3 | 14,328 | 5.585551% | 6.685 | 26,060 |
@@ -93,6 +102,9 @@
 | paper_cod 128 | G-LBF(original) | 21,459/109,613/109,614 | — | 0 |
 | paper_cod 128 | G-PLBF(original) | 32,101/98,971/203,216 | — | 0 |
 | paper_cod 128 | RA6 | — | 130,226/130,248 | 24,000,000 |
+| paper_cod 192 | G-LBF(original) | 42,776/153,832/153,832 | — | 0 |
+| paper_cod 192 | G-PLBF(original) | 46,333/150,275/306,872 | — | 0 |
+| paper_cod 192 | RA6 | — | 195,530/195,560 | 24,000,000 |
 | paper_url 64 | G-LBF(original) | 8,798/56,738/56,739 | — | 0 |
 | paper_url 64 | G-PLBF(original) | 15,745/49,791/102,000 | — | 0 |
 | paper_url 64 | RA6 | — | 64,776/64,837 | 1,701,296 |

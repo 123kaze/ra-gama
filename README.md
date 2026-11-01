@@ -68,7 +68,7 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - learned stacked 对照与 RA6-warm：`round6_bucket/results/stacked_结论.md`
 - 原版代码基线：`original_baselines/结论.md`；RA6 对作者原版 Gama 的误报对比：`round6_bucket/results/ra6_vs_gama_original.md`
 - 原版 G-PLBF 与 RA6 的端到端实测：`round7_original_e2e/results/结论.md`
-- 论文公开数据源上的重新评估：`round8_paper_data/results/report.md`、`data_availability.md`
+- 论文公开数据源上的重新评估（URL、COD × 5 个预算 × 3 次，90/90 成功）：`round8_paper_data/results/结论.md`、`report.md`、`data_availability.md`
 
 ## 结果的使用边界
 

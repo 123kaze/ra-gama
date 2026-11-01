@@ -23,9 +23,9 @@
 | paper_url 256 | G-LBF(original) | 3 | 187 | 0.054674% | 1.836 | 0.723 |
 | paper_url 256 | G-PLBF(original) | 3 | 101 | 0.029530% | 8.487 | 9.338 |
 | paper_url 256 | RA6 | 3 | 71 | 0.020759% | 29.987 | 0.328 |
-| paper_url 320 | G-LBF(original) | 2 | 160 | 0.046780% | 2.537 | 0.851 |
-| paper_url 320 | G-PLBF(original) | 1 | 129 | 0.037717% | 7.177 | 9.159 |
-| paper_url 320 | RA6 | 2 | 21 | 0.006140% | 30.617 | 0.335 |
+| paper_url 320 | G-LBF(original) | 3 | 160 | 0.046780% | 2.581 | 0.810 |
+| paper_url 320 | G-PLBF(original) | 3 | 129 | 0.037717% | 7.207 | 9.159 |
+| paper_url 320 | RA6 | 3 | 21 | 0.006140% | 30.480 | 0.336 |
 
 ## 相同学习期与评估尾段（前25%/后75%）
 
@@ -55,12 +55,12 @@
 | paper_url 256 | G-PLBF(original) | zipf | 3 | 1,180 | 0.015733% | 192.101 | 25,613 |
 | paper_url 256 | RA6 | once | 3 | 48 | 0.018712% | 0.270 | 1,051 |
 | paper_url 256 | RA6 | zipf | 3 | 54 | 0.000720% | 15.496 | 2,066 |
-| paper_url 320 | G-LBF(original) | once | 2 | 113 | 0.044051% | 0.741 | 2,890 |
-| paper_url 320 | G-LBF(original) | zipf | 2 | 1,917 | 0.025560% | 18.820 | 2,509 |
-| paper_url 320 | G-PLBF(original) | once | 1 | 88 | 0.034305% | 7.007 | 27,315 |
-| paper_url 320 | G-PLBF(original) | zipf | 1 | 1,406 | 0.018747% | 194.378 | 25,917 |
-| paper_url 320 | RA6 | once | 2 | 14 | 0.005458% | 0.271 | 1,055 |
-| paper_url 320 | RA6 | zipf | 2 | 11 | 0.000147% | 19.756 | 2,634 |
+| paper_url 320 | G-LBF(original) | once | 3 | 113 | 0.044051% | 0.680 | 2,652 |
+| paper_url 320 | G-LBF(original) | zipf | 3 | 1,917 | 0.025560% | 18.965 | 2,529 |
+| paper_url 320 | G-PLBF(original) | once | 3 | 88 | 0.034305% | 6.937 | 27,042 |
+| paper_url 320 | G-PLBF(original) | zipf | 3 | 1,406 | 0.018747% | 191.077 | 25,477 |
+| paper_url 320 | RA6 | once | 3 | 14 | 0.005458% | 0.267 | 1,040 |
+| paper_url 320 | RA6 | zipf | 3 | 11 | 0.000147% | 19.738 | 2,632 |
 
 ## 预算与正确性
 

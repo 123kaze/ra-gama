@@ -20,7 +20,8 @@
 | `windows_research/round6_bucket/` | **主方法 RA6**、MAWI 2024 留出集，E3–E12 和全部补充实验。**结果总览：`results/总览.md`** |
 | `windows_research/round7_original_e2e/` | 作者原版 G-PLBF 与 RA6 从训练、构建到实际查询的端到端实测（8 个设置 × 3 次） |
 | `windows_research/round8_paper_data/` | 按 Gama 论文公开的原始数据源（URL、COD）重新评估原版 G-LBF、G-PLBF 与 RA6 |
-| `windows_research/round9_eq7/` | 离线诊断：给 RA6 的每 key 缺失公式（论文式 7）加上有限窗口修正后，预测偏差和配置选择会变多少（方法不变） |
+| `windows_research/round9_eq7/` | 离线诊断：式 (7) 的有限窗口修正对预测和选择的影响；RA6 预测偏高从哪里来（方法不变） |
+| `windows_research/round10_fpcache/` | 不用成员索引的 64 位指纹缓存（RA6-fp64），以及与带索引缓存的差距分解 |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -70,14 +71,15 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - 原版代码基线：`original_baselines/结论.md`；RA6 对作者原版 Gama 的误报对比：`round6_bucket/results/ra6_vs_gama_original.md`
 - 原版 G-PLBF 与 RA6 的端到端实测：`round7_original_e2e/results/结论.md`
 - 论文公开数据源上的重新评估（URL、COD × 5 个预算 × 3 次，90/90 成功）：`round8_paper_data/results/结论.md`、`report.md`、`data_availability.md`
-- 式 (7) 有限窗口修正的离线诊断：`round9_eq7/results/结论.md`
+- 式 (7) 有限窗口修正、预测偏高的来源：`round9_eq7/results/结论.md`、`bias_split.md`
+- 不用成员索引的指纹缓存：`round10_fpcache/results/结论.md`、`report.md`
 
 ## 结果的使用边界
 
 总览里列了全部需要如实写的弱点，主要的几条是：
 
 - RA6 对网格回放整体约好 3%，按簇检验在 0.05 水平上不显著。
-- 缓存插入要查询成员哈希索引，这份索引不在过滤器预算内。
+- 缓存插入要查询成员哈希索引，这份索引不在过滤器预算内。不用索引的 64 位指纹缓存版（第十轮）没有预算外内存，误报中位高约 5%，假阴性是概率性的（上界约 1e-15）。
 - 相对作者原版代码，RA6 误报更少，但从头构建更慢；速度差异里包含实现语言和内存表示的差别。
 - 原版代码的预算口径（pickle 计模型大小、BF 后端实际容量）与 RA6 的物理记账不同。
 

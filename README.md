@@ -21,7 +21,8 @@
 | `windows_research/round7_original_e2e/` | 作者原版 G-PLBF 与 RA6 从训练、构建到实际查询的端到端实测（8 个设置 × 3 次） |
 | `windows_research/round8_paper_data/` | 按 Gama 论文公开的原始数据源（URL、COD）重新评估原版 G-LBF、G-PLBF 与 RA6 |
 | `windows_research/round9_eq7/` | 离线诊断：式 (7) 的有限窗口修正对预测和选择的影响；RA6 预测偏高从哪里来（方法不变） |
-| `windows_research/round10_fpcache/` | 不用成员索引的 64 位指纹缓存（RA6-fp64），以及与带索引缓存的差距分解 |
+| `windows_research/round10_fpcache/` | 不用成员索引的 64 位指纹缓存（RA6-fp64）、同格式的网格参照，以及与带索引缓存的差距分解 |
+| `windows_research/round11_tcp/` | 协议一致的真实轨迹：成员和负例都是 TCP 流（回应 UDP/TCP 构造的质疑） |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -73,6 +74,7 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - 论文公开数据源上的重新评估（URL、COD × 5 个预算 × 3 次，90/90 成功）：`round8_paper_data/results/结论.md`、`report.md`、`data_availability.md`
 - 式 (7) 有限窗口修正、预测偏高的来源：`round9_eq7/results/结论.md`、`bias_split.md`
 - 不用成员索引的指纹缓存：`round10_fpcache/results/结论.md`、`report.md`
+- 协议一致（只用 TCP）的真实轨迹：`round11_tcp/results/结论.md`、`report.md`
 
 ## 结果的使用边界
 

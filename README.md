@@ -26,7 +26,7 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 .condaenv/bin/python windows_research/round12_nomodel/src/minimal_e2e.py --output reproduced/e2e.json
 ```
 
-这个固定小例子只验证可运行性和正确性，不是论文性能证据。最新普通 BF＋缓存强基线、完整构建成本和统计勘误见 [第十二轮结论](windows_research/round12_nomodel/results/结论.md)。
+这个固定小例子只验证可运行性和正确性，不是论文性能证据。普通 BF＋缓存的全部数据覆盖见 [第十三轮基线结论](windows_research/round13_complete/results/基线补全结论.md)；完整构建成本与统计勘误见 [第十二轮结论](windows_research/round12_nomodel/results/结论.md)。
 
 ## 目录
 
@@ -44,6 +44,7 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round10_fpcache/` | 不用成员索引的 64 位指纹缓存（RA6-fp64）、同格式的网格参照，以及与带索引缓存的差距分解 |
 | `windows_research/round11_tcp/` | 协议一致的真实轨迹：成员和负例都是 TCP 流（回应 UDP/TCP 构造的质疑） |
 | `windows_research/round12_nomodel/` | COD/URL/Shalla 普通 BF＋缓存强基线、TCP-only 精确开销对照、完整构建成本和部署/统计核验；含从头运行的最小入口 |
+| `windows_research/round13_complete/` | BF＋缓存补全原主表/MAWI-24覆盖（已完成）；分块 pred_leaf 等价性和成对构建计时（状态见本轮 `STATUS.md`） |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -98,12 +99,14 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - 协议一致（只用 TCP）的真实轨迹：`round11_tcp/results/结论.md`、`report.md`
 - **最新无模型强基线与审计：** [round12 结论](windows_research/round12_nomodel/results/结论.md)、[完整对照](windows_research/round12_nomodel/results/report.md)、[构建成本](windows_research/round12_nomodel/results/construction_cost.md)、[部署及特征统计勘误](windows_research/round12_nomodel/results/deployment_audit.md)
 
+- **全覆盖 BF＋缓存对照（原主表＋TCP-only＋MAWI-24）：** [round13 基线结论](windows_research/round13_complete/results/基线补全结论.md)、[完整报告](windows_research/round13_complete/results/baseline_report.md)。存档可用 `python3 windows_research/round13_complete/src/verify_baselines.py` 校验。pred_leaf 正式计时仍在运行，不预报提速幅度。
+
 ## 结果的使用边界
 
 总览里列了全部需要如实写的弱点，主要的几条是：
 
 - RA6 对网格回放整体约好 3%，按簇检验在 0.05 水平上不显著。
-- 对普通 BF＋缓存并非普遍更好：第十二轮 COD/URL/Shalla 的 465 个纳入案例中有 20 个 Shalla 全新对抗案例落后；TCP-only 按纯 BF 实际开销收费后，RA6/对照中位为 1.063，指纹版为 1.053。旧第十一轮的 1.009/1.041 属于保守头开销对照，不能当作最新强基线。
+- 对普通 BF＋缓存并非普遍更好：第十三轮补齐所有数据后，原主表 748 个纳入案例中有 30 个全新对抗案例落后（CAIDA 10、Shalla 20）；TCP-only 按纯 BF 实际开销收费后，RA6/对照中位为 1.063，指纹版为 1.053。旧第十一轮的 1.009/1.041 属于保守头开销对照，不能当作最新强基线。MAWI-24 新基线与指纹版均标注为后续补测，不是新的独立验证。
 - 带索引缓存插入要查询成员哈希索引，这份索引不在过滤器预算内。64 位指纹版（第十轮）的缓存操作无需此索引，误报中位高约 5%；碰撞可能造成假阴性。存档的约 1e-15 数值来自理想均匀指纹假设下的占用槽位估算，不是全运行期、任意查询的零假阴性保证，也不是整个实验进程的总内存审计。
 - 相对作者原版代码，RA6 误报更少，但从头构建更慢；速度差异里包含实现语言和内存表示的差别。
 - 原版代码的预算口径（pickle 计模型大小、BF 后端实际容量）与 RA6 的物理记账不同。

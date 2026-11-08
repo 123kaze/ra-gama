@@ -12,7 +12,13 @@ cd ra-gama
 python3 scripts/reproduce_results.py
 ```
 
-默认重算 TCP-only 实验的 16 个设置，打印各方法的误报数和逐案例比值。输入是本仓库已提交的 `windows_research/round11_tcp/results/` CSV，包括普通 BF、BF＋缓存，不仅仅展示相对无缓存 Gama 的收益。
+默认重算**第十一轮存档** TCP-only 实验的 16 个设置，打印各方法的误报数和逐案例比值。输入是本仓库已提交的 `windows_research/round11_tcp/results/` CSV，包括普通 BF、BF＋缓存，不仅仅展示相对无缓存 Gama 的收益。
+
+**版本边界：** 下表的 1.009/1.041 是第十一轮保守计入 BF 头开销的结果。第十二轮使用纯 BF 实际数组开销的更强对照，TCP-only 的相应中位数为 **1.063/1.053**，另补齐 COD/URL/Shalla 对照。两轮保留各自结果，不混用。最新报告见 `windows_research/round12_nomodel/results/结论.md`；仅用标准库即可核验完整存档：
+
+```bash
+python3 windows_research/round12_nomodel/src/verify_results.py
+```
 
 预期主要比值（中位数；计算 `(FP_a+1)/(FP_b+1)` 后取中位）：
 
@@ -80,7 +86,21 @@ PYTHON="$PWD/.condaenv/bin/python" bash scripts/smoke_cache.sh
 
 第三项是有限输入、最终状态的测试，**不是指纹缓存严格零假阴性的证明**。这也不是训练、筛选、部署全链路的性能复现。
 
-## 4. 重新运行训练与查询
+## 4. 从头执行的小规模端到端检查（无原始数据依赖）
+
+已有主 Python 环境时，可以一条命令运行完整的小流程，不需要下载数据或预训练模型：
+
+```bash
+.condaenv/bin/python windows_research/round12_nomodel/src/minimal_e2e.py --output reproduced/e2e.json
+```
+
+它生成 20,000 行固定种子的合成数据，训练 200 棵树，运行冻结 RA6、共享 Gama 和 BF＋缓存，再使用真实模型数组、BF 位图、CLOCK 缓存执行 150,000 次评估查询。验证原生查询与回放一致、成员检查通过和结构不超预算。
+
+这是 **带成员索引路径的正确性冒烟检查**，不是论文性能证据，不用于声称 RA6 在合成数据上优于 BF＋缓存。当前固定例子中后者反而更好，结果原样保留。首次运行含 Numba 编译，不能用其时间作稳态速度对比。端到端入口已在没有数据缓存的发布仓库中运行通过。
+
+需要的包是既有主环境中的 NumPy、pandas、SciPy、LightGBM 和 Numba，不会自动安装。输出文件不覆盖写；重复运行时换文件名。更多说明见 `windows_research/round12_nomodel/README.md`。
+
+## 5. 重新运行完整数据集的训练与查询
 
 完整环境见根目录 README 的“环境”，数据来源和放置位置见 `data/README.md`。然后按对应实验目录的 README 运行。这个入口不会自动下载大数据或启动长任务。
 

@@ -149,8 +149,9 @@ def tcp_table(archive):
     }
     summary = {name: stats(ratio(r[a]['fp_tail'], r[b]['fp_tail']) for r in data.values())
                for name, (a, b) in pairs.items()}
-    lines = ['# TCP-only：复现已保存的 16 个设置', '',
+    lines = ['# TCP-only：复现第十一轮已保存的 16 个设置', '',
              '这不是新实验。所有数字来自已提交 CSV；只统计原协议的评估段。',
+             '这是第十一轮的保守 BF 头开销对照。最新实际开销强基线见 round12_nomodel/results/结论.md，不混用两轮数字。',
              '每条轨迹只有一个查询序列，4 个预算不是 4 次独立重复。', '',
              '| 数据集 | KiB | BF | BF+缓存 | Gama | Replay | RA6 | RA6-fp64 | Replay-fp64 | BF+缓存-fp64 |',
              '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']

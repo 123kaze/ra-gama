@@ -20,6 +20,14 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 
 这是**存档结果的统计复现，不是重跑训练与查询**。脚本会检查完整案例集合，遇到漏行、重复行或非法计数会失败，不会只取交集后报成功。环境、输入、预期数值、缓存代码冒烟测试和完整重跑入口见 [REPRODUCING.md](REPRODUCING.md)。
 
+已有主环境时，可以不下载数据，**真正从头生成数据、训练、选择、构建并执行原生查询**：
+
+```bash
+.condaenv/bin/python windows_research/round12_nomodel/src/minimal_e2e.py --output reproduced/e2e.json
+```
+
+这个固定小例子只验证可运行性和正确性，不是论文性能证据。最新普通 BF＋缓存强基线、完整构建成本和统计勘误见 [第十二轮结论](windows_research/round12_nomodel/results/结论.md)。
+
 ## 目录
 
 | 目录 | 内容 |
@@ -35,6 +43,7 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round9_eq7/` | 离线诊断：式 (7) 的有限窗口修正对预测和选择的影响；RA6 预测偏高从哪里来（方法不变） |
 | `windows_research/round10_fpcache/` | 不用成员索引的 64 位指纹缓存（RA6-fp64）、同格式的网格参照，以及与带索引缓存的差距分解 |
 | `windows_research/round11_tcp/` | 协议一致的真实轨迹：成员和负例都是 TCP 流（回应 UDP/TCP 构造的质疑） |
+| `windows_research/round12_nomodel/` | COD/URL/Shalla 普通 BF＋缓存强基线、TCP-only 精确开销对照、完整构建成本和部署/统计核验；含从头运行的最小入口 |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -87,12 +96,14 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - 式 (7) 有限窗口修正、预测偏高的来源：`round9_eq7/results/结论.md`、`bias_split.md`
 - 不用成员索引的指纹缓存：`round10_fpcache/results/结论.md`、`report.md`
 - 协议一致（只用 TCP）的真实轨迹：`round11_tcp/results/结论.md`、`report.md`
+- **最新无模型强基线与审计：** [round12 结论](windows_research/round12_nomodel/results/结论.md)、[完整对照](windows_research/round12_nomodel/results/report.md)、[构建成本](windows_research/round12_nomodel/results/construction_cost.md)、[部署及特征统计勘误](windows_research/round12_nomodel/results/deployment_audit.md)
 
 ## 结果的使用边界
 
 总览里列了全部需要如实写的弱点，主要的几条是：
 
 - RA6 对网格回放整体约好 3%，按簇检验在 0.05 水平上不显著。
+- 对普通 BF＋缓存并非普遍更好：第十二轮 COD/URL/Shalla 的 465 个纳入案例中有 20 个 Shalla 全新对抗案例落后；TCP-only 按纯 BF 实际开销收费后，RA6/对照中位为 1.063，指纹版为 1.053。旧第十一轮的 1.009/1.041 属于保守头开销对照，不能当作最新强基线。
 - 带索引缓存插入要查询成员哈希索引，这份索引不在过滤器预算内。64 位指纹版（第十轮）的缓存操作无需此索引，误报中位高约 5%；碰撞可能造成假阴性。存档的约 1e-15 数值来自理想均匀指纹假设下的占用槽位估算，不是全运行期、任意查询的零假阴性保证，也不是整个实验进程的总内存审计。
 - 相对作者原版代码，RA6 误报更少，但从头构建更慢；速度差异里包含实现语言和内存表示的差别。
 - 原版代码的预算口径（pickle 计模型大小、BF 后端实际容量）与 RA6 的物理记账不同。

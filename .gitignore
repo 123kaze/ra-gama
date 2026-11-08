@@ -7,6 +7,9 @@ __pycache__/
 *.nbi
 *.nbc
 
+# optional outputs from scripts/reproduce_results.py
+/reproduced/
+
 # datasets, caches and trained models (see data/README.md)
 LBF-Gama/
 learned_adaptive_hybrid/cache/

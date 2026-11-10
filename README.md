@@ -1,5 +1,7 @@
 # RA-Gama：面向重复查询的学习型 Bloom 过滤器内存分配
 
+[English README](README.en.md) | 简体中文
+
 本仓库是 RA-PLBF（主方法 RA6）的全部代码、实验记录和结果。它在 Gama（CIKM'25，学习型 Bloom 过滤器的模型/过滤器内存分配）之上，把查询流里的重复也算进分配：
 
 - 在模型树数 × 负例缓存比例的候选中，用学习期（流的前 25%）统计出的每个 key 的重复率预测评估段的误报；
@@ -45,6 +47,7 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round11_tcp/` | 协议一致的真实轨迹：成员和负例都是 TCP 流（回应 UDP/TCP 构造的质疑） |
 | `windows_research/round12_nomodel/` | COD/URL/Shalla 普通 BF＋缓存强基线、TCP-only 精确开销对照、完整构建成本和部署/统计核验；含从头运行的最小入口 |
 | `windows_research/round13_complete/` | BF＋缓存全覆盖；pred_leaf 60 次构建／30 对等价核验完成，配对加速中位 2.36–2.57×（见本轮最终结论） |
+| `windows_research/round14_main_e2e_v2/` | 主表八设置72进程同期重测原版与新旧RA6；[英文完整表格](windows_research/round14_main_e2e_v2/results/report.md) |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -102,6 +105,8 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - **全覆盖 BF＋缓存对照（原主表＋TCP-only＋MAWI-24）：** [round13 基线结论](windows_research/round13_complete/results/基线补全结论.md)、[完整报告](windows_research/round13_complete/results/baseline_report.md)。存档可用 `python3 windows_research/round13_complete/src/verify_baselines.py` 校验。
 - **pred_leaf 正式计时已完成：** [round13 最终结论](windows_research/round13_complete/results/结论.md)、[完整计时表](windows_research/round13_complete/results/scoring_report.md)。60 次构建／30 对等价检查全部通过，20 个组合的配对加速中位为 2.36–2.57×；分数、配置及误报不变。存档可用 `python3 windows_research/round13_complete/src/verify_scoring.py` 校验。
 
+- **最新主表八设置同期计时：** [第十四轮中文结论](windows_research/round14_main_e2e_v2/results/结论.md)、[英文完整表格](windows_research/round14_main_e2e_v2/results/report.md)。72个正式进程成功，24对RA6等价检查通过；相对旧实现构建加速中位1.71–2.62×。与同期原版相比，构建仍有6/8设置较慢，构建＋全尾段在7/8设置更快。
+
 ## 结果的使用边界
 
 总览里列了全部需要如实写的弱点，主要的几条是：
@@ -109,7 +114,7 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - RA6 对网格回放整体约好 3%，按簇检验在 0.05 水平上不显著。
 - 对普通 BF＋缓存并非普遍更好：第十三轮补齐所有数据后，原主表 748 个纳入案例中有 30 个全新对抗案例落后（CAIDA 10、Shalla 20）；TCP-only 按纯 BF 实际开销收费后，RA6/对照中位为 1.063，指纹版为 1.053。旧第十一轮的 1.009/1.041 属于保守头开销对照，不能当作最新强基线。MAWI-24 新基线与指纹版均标注为后续补测，不是新的独立验证。
 - 带索引缓存插入要查询成员哈希索引，这份索引不在过滤器预算内。64 位指纹版（第十轮）的缓存操作无需此索引，误报中位高约 5%；碰撞可能造成假阴性。存档的约 1e-15 数值来自理想均匀指纹假设下的占用槽位估算，不是全运行期、任意查询的零假阴性保证，也不是整个实验进程的总内存审计。
-- 第七／八轮相对作者原版代码的实测中，RA6 误报更少，但从头构建更慢；速度差异里包含实现语言和内存表示的差别。第十三轮 pred_leaf 降低了本实现的构建时间，但未重测原版，不能据此宣称最新公平速度已胜过原版。URL 的进程峰值 RSS 配对中位增加约 8.5%，不宣称普遍节省内存。
+- 第七／八轮从头构建较慢的历史结果继续保留。第十四轮已同期重测原版：优化后COD、Shalla的构建中位较快，其余6/8设置仍慢3.78–18.51×；Shalla有一次重复仍较慢，不能声称稳定优势。实现语言、查询内核和物理记账差异仍存在。八设置leaf/loop峰值RSS配对中位增加2.9–21.7%，不宣称普遍节省内存。
 - 原版代码的预算口径（pickle 计模型大小、BF 后端实际容量）与 RA6 的物理记账不同。
 
 结果文件和日志里有运行时的本机绝对路径和硬件信息，这些都按原样保留，作为运行记录。

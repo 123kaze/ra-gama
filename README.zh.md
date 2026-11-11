@@ -1,6 +1,6 @@
 # RA-Gama：面向重复查询的学习型 Bloom 过滤器内存分配
 
-[English README](README.en.md) | 简体中文
+[English README](README.md) | 简体中文
 
 本仓库是 RA-PLBF（主方法 RA6）的全部代码、实验记录和结果。它在 Gama（CIKM'25，学习型 Bloom 过滤器的模型/过滤器内存分配）之上，把查询流里的重复也算进分配：
 

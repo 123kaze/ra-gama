@@ -1,6 +1,6 @@
 # RA-Gama: repetition-aware memory allocation for learned Bloom filters
 
-**English** | [简体中文](README.md)
+**English** | [简体中文](README.zh.md)
 
 This repository contains the code, frozen experiment protocols, logs and results for **RA-PLBF**, whose main method is **RA6**. It extends the model/filter allocation problem studied by Gama (CIKM 2025) with a cache of verified false-positive keys and learning-window repetition statistics.
 

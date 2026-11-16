@@ -99,6 +99,25 @@ Each ratio is the **median of three paired ratios**, not a ratio of separate med
 
 The earlier round-13 paper-source URL/COD experiment reports **2.36–2.57×** for a different set of 20 combinations and did not remeasure original Gama. Do not substitute its speedups for the eight-setting results above.
 
+### Selection scaling: 1M–100M learning queries
+
+![Selection cost and paired speedup](windows_research/round15_learning_scaling_v2/figures/learning_scaling.png)
+
+[English report and phase breakdown](windows_research/round15_learning_scaling_v2/results/report.md) · [PDF](windows_research/round15_learning_scaling_v2/figures/learning_scaling.pdf) · [Linear-axis view](windows_research/round15_learning_scaling_v2/figures/learning_scaling_linear.png)
+
+Round 15 fixes CAIDA, 256 KiB, Zipf 1.0 and 180 feasible candidates, using nested learning prefixes and three fresh single-threaded repetitions per method and length (42 workers).
+
+- From 1M to 100M learning queries, RA6's selection median grows **3.049 → 9.747 seconds**, versus **6.867 → 479.965 seconds** for early-stopping Replay.
+- Median paired speedup rises at every measured length: **2.24× → 49.24×**. Both timers include all learning-dependent preprocessing; training and common scores/segment inputs are prepared beforehand.
+- Even with early stopping, Replay processes about **64–66L candidate query events**; its ordered replay phase reaches a 455.33-second median at 100M. RA6 reuses per-key statistics instead of replaying the ordered trace for each candidate.
+- This supports an **amortized trace-analysis / selection-scalability argument**, not a proof of different asymptotic classes in L at fixed candidate count. The frozen counter is sort-based, population work depends on distinct keys, and this is one finite pool/workload—not new held-out effectiveness evidence.
+
+```bash
+# Standard-library verification of the complete archived figure data:
+python3 windows_research/round15_learning_scaling_v2/src/report15.py --verify-only
+python3 windows_research/round15_learning_scaling_v2/src/test_report15.py -v
+```
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.
@@ -122,6 +141,8 @@ The earlier round-13 paper-source URL/COD experiment reports **2.36–2.57×** f
 | `windows_research/round13_complete/` | Complete BF+cache coverage and initial chunked-prefix-scoring validation |
 | `windows_research/round14_main_e2e_v2/` | Latest 72-process eight-setting campaign and English timing report |
 | `windows_research/round14_main_e2e/` | Preserved first-launch preflight failure; no training process started |
+| `windows_research/round15_learning_scaling_v2/` | Inclusive selection scaling from 1M to 100M queries; 42 workers, figures and scan-count evidence |
+| `windows_research/round15_learning_scaling/` | Preserved instrumentation-import failure before selection measurements |
 | `original_baselines/` | Original baseline drivers, pinned submodules and patches |
 | `learned_adaptive_hybrid/`, `legacy/` | Earlier studies, retained as historical records |
 | `environment/`, `data/README.md` | Pinned environments and dataset preparation locations |

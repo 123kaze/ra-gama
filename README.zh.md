@@ -124,4 +124,6 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 
 ## 第三方代码
 
+本仓库的原创代码、实验协议和结果以 [MIT 许可证](LICENSE) 发布；第三方代码保留各自的许可。
+
 见 `THIRD_PARTY.md`。未声明许可的上游代码只以子模块和补丁的形式出现，不在本仓库里转发。

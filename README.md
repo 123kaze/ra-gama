@@ -168,6 +168,10 @@ Prepare datasets and round-7 query fixtures using the linked data and round-spec
 
 The full launcher is `windows_research/round14_main_e2e_v2/src/run14.py`. **It is resume-oriented**: completed checked outputs are skipped, and failed/incomplete existing outputs are rejected. An ordinary clone already contains completed outputs; invoking the launcher there is not a fresh rerun. Use a separate experiment copy/output location and preserve the archived results before arranging a new timing campaign. Do not run memory-heavy timing workers concurrently.
 
+## License
+
+The original code, protocols and results in this repository are released under the [MIT License](LICENSE). Third-party code keeps its own license, as described below.
+
 ## Third-party code and archival status
 
 See [THIRD_PARTY.md](THIRD_PARTY.md). Unlicensed upstream implementations are referenced through pinned submodules and local patches, **not copied into this repository**. Generated adapter files are ignored by Git. BSD-licensed adaptive-filter ports retain their upstream license files. Fetching a submodule does not grant a new license or permission to redistribute it.

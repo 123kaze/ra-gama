@@ -86,7 +86,7 @@ cd windows_research/round7_original_e2e && ../../.condaenv/bin/python -u src/run
 cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.py
 ```
 
-更多命令见各目录的 `README.md` 和 `CLAUDE.md`。长时间计时实验要在空闲机器上串行跑。
+更多命令见各目录的 `README.md` 和 `DEVELOPMENT.md`。长时间计时实验要在空闲机器上串行跑。
 
 ## 结果从哪里看
 

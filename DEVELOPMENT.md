@@ -1,6 +1,6 @@
-# CLAUDE.md
+# Development notes
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file describes the repository layout, how to run the code, and the conventions the experiments follow.
 
 ## What lives here
 
@@ -56,7 +56,7 @@ This repository holds two generations of learned-Bloom-filter research code:
 
 ## Operational gotchas on this Mac
 
-- **Background runs.** Launch long runs through the harness's background runner, with a parent shell that `wait`s, wrapped in `caffeinate -s -i`. A process left orphaned with `&` after the shell exits gets throttled to efficiency cores (5–10× slower), and lid-closed sleep pauses jobs.
+- **Background runs.** Launch long runs as background jobs with a parent shell that `wait`s, wrapped in `caffeinate -s -i`. A process left orphaned with `&` after the shell exits gets throttled to efficiency cores (5–10× slower), and lid-closed sleep pauses jobs.
 - **Waiting on jobs.** Poll for result files. Never use `until ! pgrep -f "<pattern>"`: the waiting loop's own command line matches the pattern, so it never exits.
 - **Memory.** Caida-sized processes use ~2.5 GB each. Running many in parallel has triggered memory-pressure kills.
 - **MAWI downloads** (`mawi.wide.ad.jp`) are heavily throttled after the first few MB. Fetch a byte range with `curl -r`, then decompress to a file. `tcpdump -r -` from a pipe does not work here.

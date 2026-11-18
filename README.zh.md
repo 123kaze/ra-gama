@@ -52,6 +52,7 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round17_zerotree/` | RA6-Z增加真实纯BF候选与无模型部署；192案例，TCP部分改善及剩余失败完整披露 |
 | `windows_research/round18_gt_audit/` | 原只读频数诊断，历史记录不变；局部修复见第十九轮 |
 | `windows_research/round19_gt_fix/` | 重复频次缺档修复、1132案例统计不变及14案例双缓存格式重跑，保留所有变化 |
+| `windows_research/round20_zero_guard/` | 显式保留BF兜底并学习期实测门控；192案例、对BF无退化及对RA6的26个退化完整记录 |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -117,6 +118,8 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - **zero-tree新方法RA6-Z（部分改善）：** [第十七轮结论](windows_research/round17_zerotree/results/结论.md)、[英文完整报告](windows_research/round17_zerotree/results/report.md)。192案例、1536行全部通过；TCP-only两种格式自动选0树8/16和9/16，相对BF＋缓存中位从1.0629／1.0526降至1.0084／1.0149，落后从13/16降至8/16。各有一项比原RA6退化；强模型控制与全新对抗结果都未改变，对抗失败未解决。原RA6冻结结果保留，不将RA6-Z表述为保证不输基线。
 
 - **频数缺档已局部修复，见第十九轮：** [修复与使用入口](windows_research/round19_gt_fix/README.md)、[最终中文结论](windows_research/round19_gt_fix/results/结论.md)、[英文前后对照](windows_research/round19_gt_fix/results/report.md)。仅对2≤c≤5的缺档保留c，singleton及gt=False不变。1132个主表案例统计逐位不变，14个案例双格式重跑完成；MAWI-24四预算及51个扩展输入不变。两格式各有5个RA6案例FP变化，有改善也有退化；718/748胜、30负及BF＋缓存中位不变，Replay精确统计略变。旧源码／第十八轮审计保留，新驱动需显式使用第十九轮入口；论文未改。
+
+- **显式zero-tree兜底门控RA6-ZGate：** [第二十轮结论](windows_research/round20_zero_guard/results/结论.md)、[英文完整报告](windows_research/round20_zero_guard/results/report.md)。保留RA6赢家与13个BF候选中的学习期回放赢家，只比较学习期实测FP，同分优先t=0。192个案例学习期不劣检查全部通过；评估尾段相对BF＋缓存80胜／112平／0负，TCP和全新对抗全部回退BF、强模型控制保持RA6。相对RA6仍有26个退化案例完整保留。这是有限测试范围观察，不是未来任意流不劣保证；额外回放成本、不能继承旧选择加速数字和旧无重复退化命题均明确披露。
 
 ## 结果的使用边界
 

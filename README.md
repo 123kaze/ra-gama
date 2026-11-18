@@ -156,6 +156,21 @@ python3 windows_research/round19_gt_fix/src/report19.py --verify-only
 .condaenv/bin/python windows_research/round19_gt_fix/src/test_summarize19.py -v
 ```
 
+### Explicit zero-tree guard: no BF+cache losses in the tested matrix
+
+[Round20 report](windows_research/round20_zero_guard/results/report.md) · [中文结论](windows_research/round20_zero_guard/results/结论.md)
+
+**RA6-ZGate** retains the repaired RA6 winner and the exact learning-replay winner of 13 BF/cache candidates. It chooses the smaller actual learning FP (ties prefer no model), instead of letting predictive top-five pruning eliminate the BF family. All 192 learning-window minimum checks pass.
+
+On the unchanged round17 matrix, its evaluation-tail comparison against BF+cache is **80 wins / 112 ties / 0 losses**: all 32 TCP-only and 80 fresh-adversarial cases choose zero trees, while all 80 stronger-model controls keep RA6. This is a measured finite-matrix result, **not a future-query guarantee**. Against RA6, the result is **86 wins / 80 ties / 26 losses**; all regressions are retained.
+
+The added BF-family and learned-anchor learning replays are real costs. This variant does not inherit the old 49.24× statistics-only speedup or the unconditional no-repeat reduction to Gama (the new guard can select BF instead). It also does not avoid training during search or prove database latency gains.
+
+```bash
+python3 windows_research/round20_zero_guard/src/report20.py --verify-only
+python3 windows_research/round20_zero_guard/src/test_report20.py -v
+```
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.
@@ -184,6 +199,7 @@ python3 windows_research/round19_gt_fix/src/report19.py --verify-only
 | `windows_research/round17_zerotree/` | RA6-Z zero-tree extension; 192 cases, model-free deployment, partial TCP improvement and remaining failures |
 | `windows_research/round18_gt_audit/` | Historical read-only diagnosis of the frequency gap; repair and rechecks are in round19 |
 | `windows_research/round19_gt_fix/` | Local repeated-frequency-gap repair; input invariance, 28 cache-specific rechecks, revised RA-family/candidate results |
+| `windows_research/round20_zero_guard/` | Explicit t=0 learning-replay guard; 192 cases, no tail loss to BF+cache here, all 26 regressions versus RA6 disclosed |
 | `original_baselines/` | Original baseline drivers, pinned submodules and patches |
 | `learned_adaptive_hybrid/`, `legacy/` | Earlier studies, retained as historical records |
 | `environment/`, `data/README.md` | Pinned environments and dataset preparation locations |

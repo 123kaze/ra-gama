@@ -138,20 +138,22 @@ python3 windows_research/round17_zerotree/src/report17.py --verify-only
 python3 windows_research/round17_zerotree/src/test_report17.py -v
 ```
 
-### Known frequency-estimator defect: audited, not yet repaired
+### Frequency-gap repair: completed in round 19
 
-[Actual-data audit](windows_research/round18_gt_audit/results/report.md) · [中文结论](windows_research/round18_gt_audit/results/结论.md) · [14 repeated-key affected cases](windows_research/round18_gt_audit/results/affected_cases.json)
+[Repaired entry point and usage](windows_research/round19_gt_fix/README.md) · [Verified old/new report](windows_research/round19_gt_fix/results/report.md) · [中文结论](windows_research/round19_gt_fix/results/结论.md) · [Original read-only audit](windows_research/round18_gt_audit/results/report.md)
 
-The frozen low-count Good–Turing rule can erase all rates on legal inputs where every key appears exactly2–5 times. Round 18 is **read-only diagnosis**, not a repaired method: all 1,146 original cases and four MAWI-24 budgets were checked with actual pool sizes and archived stream hashes, plus a separately labeled16-case TCP-only supplement.
+The post-freeze local repair retains empirical count c only for `gt=True`, `2<=c<=5` and empty `N[c+1]`. Singleton, counts above 5 and `gt=False` remain unchanged. **Frozen round4 code is preserved:** use the new `summarize19` / scoped `entry19.patched()` entry point; old experiment drivers do not silently become repaired implementations.
 
-- Four repeated-key learning streams (14 budget cases) have a missing-next bin: each contains one frequency-five key and no frequency-six key, affecting five of2.5M learning queries (0.0002%).
-- Another140 cases are all-singleton inputs under the original no-repeat construction. They must be distinguished from total mass collapse; unconditional fallback to raw counts would assign total seen+unseen mass2.
-- Original real traces, MAWI-24 and TCP-only traces have no missing-next bin at c<=5. No actual archived stream has total seen+unseen mass collapse.
-- Small affected mass is **not proof of unchanged selected structures or FP counts**. No candidates have been reranked here. The counter can also yield non-unit total mass without missing bins; local fallback and probability calibration are separate issues.
+- All 1,146 main-case statistics were rechecked: **1,132 byte-identical**, 14 affected. The four MAWI-24 budgets and 51 supplementary learning inputs are unchanged.
+- All 14 affected cases were rechecked in both cache formats, with indexed top3/5/10, warm, RA4 ablations and candidate prediction/ranking checks. Each format has **five changed RA6 FP counts**, including regressions; not all results are unchanged.
+- Against BF+cache, **718/748 wins and 30 losses remain unchanged**, as do the median ratios. Exact same-format Replay aggregates change slightly: indexed median 0.9994613441→0.9994815262; fp64 0.9955383568→0.9956155076. See full-precision records, not a claim of statistical equivalence.
+- This fixes repeated-count collapse, not boundary discontinuity, nonmonotonicity or non-unit total mass. Original timing/significance results keep their old-version attribution; neither was remeasured/retested here. The original holdout record remains intact.
 
 ```bash
-python3 windows_research/round18_gt_audit/src/report18.py --verify-only
-python3 windows_research/round18_gt_audit/src/test_report18.py -v
+# Standard library: reproduce and verify the repaired archive
+python3 windows_research/round19_gt_fix/src/report19.py --verify-only
+# Existing main environment: repair invariants and runtime-hook tests
+.condaenv/bin/python windows_research/round19_gt_fix/src/test_summarize19.py -v
 ```
 
 ### Important methodological boundaries
@@ -180,7 +182,8 @@ python3 windows_research/round18_gt_audit/src/test_report18.py -v
 | `windows_research/round15_learning_scaling_v2/` | Inclusive selection scaling from 1M to 100M queries; 42 workers, figures and scan-count evidence |
 | `windows_research/round15_learning_scaling/` | Preserved instrumentation-import failure before selection measurements |
 | `windows_research/round17_zerotree/` | RA6-Z zero-tree extension; 192 cases, model-free deployment, partial TCP improvement and remaining failures |
-| `windows_research/round18_gt_audit/` | Read-only frequency-gap audit of actual main/holdout/TCP streams; confirmed estimator defect, no repair installed |
+| `windows_research/round18_gt_audit/` | Historical read-only diagnosis of the frequency gap; repair and rechecks are in round19 |
+| `windows_research/round19_gt_fix/` | Local repeated-frequency-gap repair; input invariance, 28 cache-specific rechecks, revised RA-family/candidate results |
 | `original_baselines/` | Original baseline drivers, pinned submodules and patches |
 | `learned_adaptive_hybrid/`, `legacy/` | Earlier studies, retained as historical records |
 | `environment/`, `data/README.md` | Pinned environments and dataset preparation locations |

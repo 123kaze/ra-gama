@@ -118,6 +118,26 @@ python3 windows_research/round15_learning_scaling_v2/src/report15.py --verify-on
 python3 windows_research/round15_learning_scaling_v2/src/test_report15.py -v
 ```
 
+### Zero-tree candidate extension: partial weak-model improvement
+
+[RA6-Z English report](windows_research/round17_zerotree/results/report.md) · [中文结论](windows_research/round17_zerotree/results/结论.md) · [Failure-stage diagnosis](windows_research/round17_zerotree/results/diagnostics.json)
+
+Round 17 adds thirteen physically accounted ordinary BF/cache candidates to the global predictive shortlist. This is **RA6-Z**, a new post-hoc method—not a rewrite of frozen RA6. Selected zero-tree filters deploy without model or feature arrays. All 192 cases / 1,536 method records pass native correctness, budget checks and five original-reference regressions.
+
+| TCP-only cache | Zero-tree selected | Old RA6 / BF+cache FP ratio | RA6-Z / BF+cache FP ratio | New win/tie/loss |
+|---|---:|---:|---:|---:|
+| Indexed | 8/16 | 1.0629 | 1.0084 | 6/2/8 |
+| fp64 | 9/16 | 1.0526 | 1.0149 | 6/2/8 |
+
+Ratios are medians of per-case `(FP_method+1)/(FP_reference+1)`. Losses fall from 13/16 to 8/16 per format, **not to zero**. One setting per format regresses relative to original RA6 (284→285 FP indexed; 378→411 FP fp64). All 80 stronger-model controls remain configuration/FP-identical to RA6; all 80 fresh-adversarial controls also remain unchanged, including the original failures.
+
+Remaining TCP losses occur when zero-tree is pruned before construction (5 indexed / 4 fp64), built but loses refinement (2/2), or selected with a different cache fraction from replay (1/2). Candidate availability does not guarantee a no-regret future-tail fallback. Search still evaluates learned candidates; this is not zero training cost.
+
+```bash
+python3 windows_research/round17_zerotree/src/report17.py --verify-only
+python3 windows_research/round17_zerotree/src/test_report17.py -v
+```
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.
@@ -143,6 +163,7 @@ python3 windows_research/round15_learning_scaling_v2/src/test_report15.py -v
 | `windows_research/round14_main_e2e/` | Preserved first-launch preflight failure; no training process started |
 | `windows_research/round15_learning_scaling_v2/` | Inclusive selection scaling from 1M to 100M queries; 42 workers, figures and scan-count evidence |
 | `windows_research/round15_learning_scaling/` | Preserved instrumentation-import failure before selection measurements |
+| `windows_research/round17_zerotree/` | RA6-Z zero-tree extension; 192 cases, model-free deployment, partial TCP improvement and remaining failures |
 | `original_baselines/` | Original baseline drivers, pinned submodules and patches |
 | `learned_adaptive_hybrid/`, `legacy/` | Earlier studies, retained as historical records |
 | `environment/`, `data/README.md` | Pinned environments and dataset preparation locations |

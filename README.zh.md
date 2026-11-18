@@ -49,6 +49,7 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round13_complete/` | BF＋缓存全覆盖；pred_leaf 60 次构建／30 对等价核验完成，配对加速中位 2.36–2.57×（见本轮最终结论） |
 | `windows_research/round14_main_e2e_v2/` | 主表八设置72进程同期重测原版与新旧RA6；[英文完整表格](windows_research/round14_main_e2e_v2/results/report.md) |
 | `windows_research/round15_learning_scaling_v2/` | 学习期100万–1亿的选择成本与配对加速图，含预处理、早停扫描量和完整42次计时 |
+| `windows_research/round17_zerotree/` | RA6-Z增加真实纯BF候选与无模型部署；192案例，TCP部分改善及剩余失败完整披露 |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -109,6 +110,9 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - **最新主表八设置同期计时：** [第十四轮中文结论](windows_research/round14_main_e2e_v2/results/结论.md)、[英文完整表格](windows_research/round14_main_e2e_v2/results/report.md)。72个正式进程成功，24对RA6等价检查通过；相对旧实现构建加速中位1.71–2.62×。与同期原版相比，构建仍有6/8设置较慢，构建＋全尾段在7/8设置更快。
 
 - **学习期100万至1亿的选择扩展性：** [第十五轮图与中文结论](windows_research/round15_learning_scaling_v2/results/结论.md)、[英文报告](windows_research/round15_learning_scaling_v2/results/report.md)、[PDF图](windows_research/round15_learning_scaling_v2/figures/learning_scaling.pdf)。42个正式进程全部成功，双方均计入统计预处理，Replay保留早停；RA6选择中位3.05→9.75秒，Replay为6.87→479.96秒，配对加速中位2.24×→49.24×。这是避免逐候选回放带来的扩展性证据，不将固定候选数的有限范围结果称为不同渐近阶的证明。
+
+
+- **zero-tree新方法RA6-Z（部分改善）：** [第十七轮结论](windows_research/round17_zerotree/results/结论.md)、[英文完整报告](windows_research/round17_zerotree/results/report.md)。192案例、1536行全部通过；TCP-only两种格式自动选0树8/16和9/16，相对BF＋缓存中位从1.0629／1.0526降至1.0084／1.0149，落后从13/16降至8/16。各有一项比原RA6退化；强模型控制与全新对抗结果都未改变，对抗失败未解决。原RA6冻结结果保留，不将RA6-Z表述为保证不输基线。
 
 ## 结果的使用边界
 

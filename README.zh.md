@@ -53,6 +53,8 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round18_gt_audit/` | 原只读频数诊断，历史记录不变；局部修复见第十九轮 |
 | `windows_research/round19_gt_fix/` | 重复频次缺档修复、1132案例统计不变及14案例双缓存格式重跑，保留所有变化 |
 | `windows_research/round20_zero_guard/` | 显式保留BF兜底并学习期实测门控；192案例、对BF无退化及对RA6的26个退化完整记录 |
+| `windows_research/round21_theory_check/` | KL／AM-GM条件推导与数值反例，与已取消共享回放独立 |
+| `windows_research/round22_kl_diagnostic_v2/` | 13例KL／EB／零树静态诊断及散点，包含失败场景；不是完整缓存感知新方法 |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -120,6 +122,8 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - **频数缺档已局部修复，见第十九轮：** [修复与使用入口](windows_research/round19_gt_fix/README.md)、[最终中文结论](windows_research/round19_gt_fix/results/结论.md)、[英文前后对照](windows_research/round19_gt_fix/results/report.md)。仅对2≤c≤5的缺档保留c，singleton及gt=False不变。1132个主表案例统计逐位不变，14个案例双格式重跑完成；MAWI-24四预算及51个扩展输入不变。两格式各有5个RA6案例FP变化，有改善也有退化；718/748胜、30负及BF＋缓存中位不变，Replay精确统计略变。旧源码／第十八轮审计保留，新驱动需显式使用第十九轮入口；论文未改。
 
 - **显式zero-tree兜底门控RA6-ZGate：** [第二十轮结论](windows_research/round20_zero_guard/results/结论.md)、[英文完整报告](windows_research/round20_zero_guard/results/report.md)。保留RA6赢家与13个BF候选中的学习期回放赢家，只比较学习期实测FP，同分优先t=0。192个案例学习期不劣检查全部通过；评估尾段相对BF＋缓存80胜／112平／0负，TCP和全新对抗全部回退BF、强模型控制保持RA6。相对RA6仍有26个退化案例完整保留。这是有限测试范围观察，不是未来任意流不劣保证；额外回放成本、不能继承旧选择加速数字和旧无重复退化命题均明确披露。
+
+- **KL＋收缩＋t=0实际诊断：** [第二十二轮中文结论](windows_research/round22_kl_diagnostic_v2/results/结论.md)、[英文报告](windows_research/round22_kl_diagnostic_v2/results/report.md)、[条件公式与实测散点](windows_research/round22_kl_diagnostic_v2/figures/kl_diagnostic.png)。13例限定静态learned／BF缓存候选试验完成，相对BF学习回放9胜／2平／2负；四个TCP设置回退零树，但CAIDA、Shalla对抗仍选错。47组同树静态收缩对照24改善／23退化，尚无稳定收益。本轮不是完整cache-aware EB-RA6，不含有效置信门控；A/B图的实际FP比较和连续模型核验严格区分。已取消的共享回放不作为完整结果发布。
 
 ## 结果的使用边界
 

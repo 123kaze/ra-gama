@@ -171,6 +171,23 @@ python3 windows_research/round20_zero_guard/src/report20.py --verify-only
 python3 windows_research/round20_zero_guard/src/test_report20.py -v
 ```
 
+### KL / shrinkage / zero-tree: limited actual-data diagnostic
+
+[English report](windows_research/round22_kl_diagnostic_v2/results/report.md) · [中文结论](windows_research/round22_kl_diagnostic_v2/results/结论.md) · [Conditional A/B scatter](windows_research/round22_kl_diagnostic_v2/figures/kl_diagnostic.png)
+
+The exploratory **KL-EB22-static13** compares four static learned prefixes (cache=0) with 13 BF/cache candidates; it is **not full cache-aware EB-RA6** and has no confidence-bound non-regression guarantee. All13 prespecified non-holdout cases completed: versus BF+learning replay,9 wins /2 ties /2 losses. All four TCP-only settings select zero trees, but CAIDA/Shalla fresh-adversarial cases still select worse learned filters.
+
+Across47 same-tree/static comparisons, EB shrinkage improves24 and worsens23 FP counts. Only35 of141 actual static candidates satisfy the unclipped A identity's conditions; B's two-interior-solution condition holds for27. The scatter distinguishes measured static-filter FP from a **conditional continuous-model** AM/GM check—B is not an empirical q/r-filter deployment result.
+
+The theoretical counterexamples and initial serialization failure are preserved separately. No retuning follows the outcomes; no paper change or universal KL-gate benefit is asserted. The cancelled shared-replay campaign remains stopped and is not presented as a completed result.
+
+```bash
+python3 windows_research/round22_kl_diagnostic_v2/src/report22.py --verify-only
+python3 windows_research/round22_kl_diagnostic_v2/src/test_report22.py -v
+```
+
+One unused report script in the broad experiment-host freeze differs from the user's rewritten publication prose. This exact, reporting-only variant is explicitly documented in the round22 README and archive verifier; no runtime/math/selector hash is exempted and no deleted content is restored.
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.
@@ -200,6 +217,9 @@ python3 windows_research/round20_zero_guard/src/test_report20.py -v
 | `windows_research/round18_gt_audit/` | Historical read-only diagnosis of the frequency gap; repair and rechecks are in round19 |
 | `windows_research/round19_gt_fix/` | Local repeated-frequency-gap repair; input invariance, 28 cache-specific rechecks, revised RA-family/candidate results |
 | `windows_research/round20_zero_guard/` | Explicit t=0 learning-replay guard; 192 cases, no tail loss to BF+cache here, all 26 regressions versus RA6 disclosed |
+| `windows_research/round21_theory_check/` | Independent conditional KL/AM-GM proofs and numerical counterexamples; not the cancelled replay experiment |
+| `windows_research/round22_kl_diagnostic_v2/` | 13-case static KL/EB/t=0 diagnostic, full candidate records and conditional-model scatter |
+| `windows_research/round22_kl_diagnostic/` | Preserved serialization-failed smoke; no completed performance result |
 | `original_baselines/` | Original baseline drivers, pinned submodules and patches |
 | `learned_adaptive_hybrid/`, `legacy/` | Earlier studies, retained as historical records |
 | `environment/`, `data/README.md` | Pinned environments and dataset preparation locations |

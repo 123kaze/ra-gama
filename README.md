@@ -188,6 +188,30 @@ python3 windows_research/round22_kl_diagnostic_v2/src/test_report22.py -v
 
 One unused report script in the broad experiment-host freeze differs from the user's rewritten publication prose. This exact, reporting-only variant is explicitly documented in the round22 README and archive verifier; no runtime/math/selector hash is exempted and no deleted content is restored.
 
+### Lightweight models and training-objective experiments (rounds 23–26)
+
+[Research notes / 思考.md](docs/README.md) · [Lightweight-model plan](docs/轻量模型与缓存感知Bloom过滤器_研究思路.md)
+
+These files are now mirrored from the experiment repository, rather than available only on its `bloom/submission-baselines` branch. Original notes/results are retained; this is not a replacement of frozen RA6 or the paper's main experiments.
+
+| Round | Experiment | Outcome and scope |
+|---|---|---|
+| [23](windows_research/round23_lightweight/results/report.md) | Six lightweight scorers plus pure BF; 36 trainings, 84 static-filter records | URL shows memory/FP/inference tradeoffs; all tested TCP learned models still lose to plain BF. Some URL optimizers hit their iteration cap. |
+| [24](windows_research/round24_cell_router/results/report.md) | Two-feature, 3-bit-per-cell region table; 24 builds | Fast routing but limited discrimination; complete router costs 696/1240 bytes including edges/headers, not just table payload. |
+| [25](windows_research/round25_filter_training/results/report.md) | Same MLP8 capacity, BCE continuation versus capped filter-aware loss; 48 records | All three URL128KiB initializations reduce FP; URL64KiB is mixed and TCP remains worse than BF. No cache or quantization in this test. |
+| [26](windows_research/round26_weighted_tree/results/report.md) | Same LightGBM settings, Uniform / TrafficGT / EscapeGT weights | 96 feasible + 12 infeasible configurations. EscapeGT versus Uniform: 17 wins / 2 ties / 13 losses across 32 matched configurations; no stable few-tree replacement for 160 trees demonstrated. |
+
+The **cancelled shared-replay work is preserved only as an incomplete archive**: [round21](windows_research/round21_shared_replay/README.md) and [round21 v2](windows_research/round21_shared_replay_v2/README.md). V2 recorded 735/2880 timings before cancellation; the wrong-thread startup batch is separately excluded. It must not be treated as a completed speedup experiment or restarted implicitly.
+
+```bash
+# Standard-library checks of completed archives; no new training/query campaign:
+python3 windows_research/round23_lightweight/src/report23.py --verify-only
+python3 windows_research/round25_filter_training/src/report25.py --verify-only
+python3 windows_research/round26_weighted_tree/src/report26.py --verify-only
+```
+
+Native timings here amortize Python calls over compiled loops; they are not database or scalar Python API latency. Weight generation in round26 uses a fixed-reference, score-bin transfer to disjoint training negatives—not true future per-key escape counts. All unfavorable outcomes and stopping conditions remain recorded.
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.
@@ -220,6 +244,12 @@ One unused report script in the broad experiment-host freeze differs from the us
 | `windows_research/round21_theory_check/` | Independent conditional KL/AM-GM proofs and numerical counterexamples; not the cancelled replay experiment |
 | `windows_research/round22_kl_diagnostic_v2/` | 13-case static KL/EB/t=0 diagnostic, full candidate records and conditional-model scatter |
 | `windows_research/round22_kl_diagnostic/` | Preserved serialization-failed smoke; no completed performance result |
+| `windows_research/round21_shared_replay/`, `round21_shared_replay_v2/` | Cancelled/superseded shared-replay implementations and incomplete records; not final performance evidence |
+| `windows_research/round23_lightweight/` | Lightweight scorer screen, exact physical budget and native timing |
+| `windows_research/round24_cell_router/` | Static two-feature cell-to-region table prototype |
+| `windows_research/round25_filter_training/` | Matched-capacity MLP training-loss comparison |
+| `windows_research/round26_weighted_tree/` | LightGBM negative-weight-only experiment with query-mass control |
+| `docs/` | Research directions and user-provided coupling-optimization notes |
 | `original_baselines/` | Original baseline drivers, pinned submodules and patches |
 | `learned_adaptive_hybrid/`, `legacy/` | Earlier studies, retained as historical records |
 | `environment/`, `data/README.md` | Pinned environments and dataset preparation locations |

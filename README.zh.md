@@ -55,6 +55,9 @@ python3 scripts/reproduce_results.py --table all --output reproduced
 | `windows_research/round20_zero_guard/` | 显式保留BF兜底并学习期实测门控；192案例、对BF无退化及对RA6的26个退化完整记录 |
 | `windows_research/round21_theory_check/` | KL／AM-GM条件推导与数值反例，与已取消共享回放独立 |
 | `windows_research/round22_kl_diagnostic_v2/` | 13例KL／EB／零树静态诊断及散点，包含失败场景；不是完整缓存感知新方法 |
+| `windows_research/round21_shared_replay/`、`round21_shared_replay_v2/` | 已停止／取消的共享回放代码和不完整结果归档 |
+| `windows_research/round23_lightweight/` – `round26_weighted_tree/` | 轻量模型、分区表、同容量训练目标及LightGBM权重对照 |
+| `docs/` | 思考.md和轻量模型研究思路 |
 | `original_baselines/` | 用各论文官方代码重跑的对照：Gama、FastPLBF、Stacked Filter、AdaptiveQF、SkiQF。见其 `README.md`、`结论.md` |
 | `legacy/` | 更早的"LightTree-PLBF 学生 vs Gama 教师"研究（`做了什么..md`、`实验结果.md`），只作存档 |
 | `environment/` | 两个 conda 环境的精确包列表 |
@@ -124,6 +127,18 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 - **显式zero-tree兜底门控RA6-ZGate：** [第二十轮结论](windows_research/round20_zero_guard/results/结论.md)、[英文完整报告](windows_research/round20_zero_guard/results/report.md)。保留RA6赢家与13个BF候选中的学习期回放赢家，只比较学习期实测FP，同分优先t=0。192个案例学习期不劣检查全部通过；评估尾段相对BF＋缓存80胜／112平／0负，TCP和全新对抗全部回退BF、强模型控制保持RA6。相对RA6仍有26个退化案例完整保留。这是有限测试范围观察，不是未来任意流不劣保证；额外回放成本、不能继承旧选择加速数字和旧无重复退化命题均明确披露。
 
 - **KL＋收缩＋t=0实际诊断：** [第二十二轮中文结论](windows_research/round22_kl_diagnostic_v2/results/结论.md)、[英文报告](windows_research/round22_kl_diagnostic_v2/results/report.md)、[条件公式与实测散点](windows_research/round22_kl_diagnostic_v2/figures/kl_diagnostic.png)。13例限定静态learned／BF缓存候选试验完成，相对BF学习回放9胜／2平／2负；四个TCP设置回退零树，但CAIDA、Shalla对抗仍选错。47组同树静态收缩对照24改善／23退化，尚无稳定收益。本轮不是完整cache-aware EB-RA6，不含有效置信门控；A/B图的实际FP比较和连续模型核验严格区分。已取消的共享回放不作为完整结果发布。
+
+## 新同步的研究文档与第21、23–26轮
+
+[思考.md](docs/思考.md) · [轻量模型与缓存感知Bloom过滤器研究思路](docs/轻量模型与缓存感知Bloom过滤器_研究思路.md) · [同步来源与文档说明](docs/README.md)
+
+- **第21轮两版**：[共享回放归档](windows_research/round21_shared_replay/README.md)、[全计时版归档](windows_research/round21_shared_replay_v2/README.md)。均未完成；v2主动取消前记录735/2880次计时，错误线程设置批次单独排除。保留代码和日志，但不作为完整性能结论，也没有重启任务。
+- **第23轮**：[轻量评分器完整表](windows_research/round23_lightweight/results/report.md)。36次训练、84条过滤器记录；URL出现速度／空间／FP折中，TCP仍以纯BF更好。
+- **第24轮**：[二维分区表](windows_research/round24_cell_router/results/report.md)。24次构建；路由快，但限定特征下区分能力不足。完整路由占696／1240字节，不仅是3bit格子表。
+- **第25轮**：[同容量MLP改训练目标](windows_research/round25_filter_training/results/结论.md)。URL128KiB三种初始化都降低FP，64KiB结果不稳定；不是缓存感知或量化训练，未收敛状态完整保留。
+- **第26轮**：[只改LightGBM负例权重的A方案](windows_research/round26_weighted_tree/results/结论.md)。108配置中96可行、12不可行；逃逸权重对等权17胜／2平／13负，没有稳定的少树替代160树证据。
+
+以上原文及结果从CPP实验仓库的已提交版本同步，旧文档中的历史分支状态保留。研究笔记不是已验证定理，编译循环微基准不是数据库端到端延迟；不替换原RA6或论文主结果。
 
 ## 结果的使用边界
 

@@ -8,3 +8,16 @@
 第21轮共享回放两版仅为已停止／已取消的部分归档，不是完整性能结果；第23–26轮为已完成的小规模探索。它们不是对冻结RA6或论文主实验的无声替换。
 
 Some experiment notes preserve the branch/publication state at the time of the original run. These records are now mirrored here; no cancelled job was restarted and no previously removed experiment was restored by this sync.
+
+## 2026-11-22：第27–31轮与执行计划
+
+- [实验与审查修复计划（完成后勾选）](实验与审查修复计划_20261121.md)
+- [稿件表述建议与历史待审阅补丁](review_claims_20261121/README.md)：不是完整更新或新编译的论文；最新指示是不再改稿、不恢复已产生的局部改动，只继续实验和MD。
+- [标准库只读核验器](verify_rounds27_31.py)
+- [真实HTTP结果](../windows_research/round27_http_real/README.md)
+- [重加权机制与散点图](../windows_research/round28_reweight_mechanism/README.md)
+- [聚类区间与资源明细](../windows_research/round29_evidence_audit_v2/README.md)
+- [审查数值核验](../windows_research/round30_submission_audit/README.md)
+- [SQL确认后才插入负缓存的312条计时](../windows_research/round31_sqlite_online/README.md)
+
+这批实验文件精确同步自CPP实验分支提交`d9c2fe31dd0ac7e9a1a6eac3a41bb72eebc05f3e`，不合并实验仓库Git历史。Round29v1保留为失败归档；两次NASA下载超时也保留日志。原始日志、预处理缓存、临时SQLite数据库和无关工作文件不发布。第29轮依赖的report17历史文字差异有精确hash兼容记录，不恢复用户删除的表述。

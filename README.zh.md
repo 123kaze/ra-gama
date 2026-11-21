@@ -140,6 +140,22 @@ cd windows_research/round8_paper_data && ../../.condaenv/bin/python -u src/run.p
 
 以上原文及结果从CPP实验仓库的已提交版本同步，旧文档中的历史分支状态保留。研究笔记不是已验证定理，编译循环微基准不是数据库端到端延迟；不替换原RA6或论文主结果。
 
+## 第27–31轮：真实HTTP、理论机制与SQL真反馈
+
+[勾选式执行计划](docs/实验与审查修复计划_20261121.md) · [只读归档核验](docs/verify_rounds27_31.py)
+
+- [第27轮](windows_research/round27_http_real/README.md)：NASA真实缺失资源请求、90行。模型有区分能力，RA在4/8KiB优于Replay，但仍明显输BF+Cache；回溯静态目录和实际日志日期范围完整披露。
+- [第28轮](windows_research/round28_reweight_mechanism/README.md)：168配对设置、504次物理BF构建；分开内点、截断与真实CLOCK。条件公式验证通过，TCP的预测关联较强，URL较弱，负收益全部保留。
+- [第29轮v2](windows_research/round29_evidence_audit_v2/README.md)：按8个数据集整簇bootstrap、60行资源表、表示碰撞注入；主方案RA/Replay=0.975084，95%区间[0.947281,1.001171]。保留[v1报告字段失败](windows_research/round29_evidence_audit/STATUS.md)，不靠换分组追求显著。
+- [第30轮](windows_research/round30_submission_audit/README.md)：核实旧SQLite计时先标签模拟后SQL、敏感性13/16、800MB原始轨迹/931MB学习状态、GT总质量4/3；限定18设置没有发现无重复选择反例，不冒充全称证明。
+- [第31轮](windows_research/round31_sqlite_online/README.md)：8设置×两后端×3重复，共312计时。逐query立即SQL，返回None才插入Cache；全放行mask与最终Cache字节一致、0FN。RA相对NoFilter6/16胜、Gama12/16胜、BF+Cache0/16胜；含Python标量开销，不是纯原生极限或冷盘结果。
+
+```sh
+python3 docs/verify_rounds27_31.py
+```
+
+该核验无需原始数据、NumPy或新实验，不修改论文。旧投稿标签`pvldb-submission`保持不动；第21轮仍取消；不恢复先前删除的内容。第29轮只对已知report17历史报告文字的两种精确hash作发布兼容，不放宽算法源码。论文相关建议继续写MD；现有局部稿件改动按用户要求留在本地，不纳入本次推送。
+
 ## 结果的使用边界
 
 总览里列了全部需要如实写的弱点，主要的几条是：

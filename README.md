@@ -212,6 +212,25 @@ python3 windows_research/round26_weighted_tree/src/report26.py --verify-only
 
 Native timings here amortize Python calls over compiled loops; they are not database or scalar Python API latency. Weight generation in round26 uses a fixed-reference, score-bin transfer to disjoint training negatives—not true future per-key escape counts. All unfavorable outcomes and stopping conditions remain recorded.
 
+### Real HTTP traffic, mechanism tests and actual SQL feedback (rounds 27–31)
+
+[Execution checklist / 计划表](docs/实验与审查修复计划_20261121.md) · [Read-only archive verifier](docs/verify_rounds27_31.py)
+
+| Round | Completed evidence | Outcome and boundary |
+| --- | --- | --- |
+| [27](windows_research/round27_http_real/README.md) | NASA real HTTP missing-resource requests; 90 method records | Non-protocol features have AUC about0.862–0.901. RA improves over Replay at4/8KiB but still loses to BF+Cache. Retrospective stable-catalog construction, not a live mutable-site benchmark. |
+| [28](windows_research/round28_reweight_mechanism/README.md) | 168 paired settings,504 physical BF builds; theoretical-gain/actual-gain scatter | Continuous interior identity verified; clipping, physical-BF noise and coupled CLOCK shown separately. TCP correlation is stronger than URL; losses retained. Synthetic popularity on real features, not a new trace. |
+| [29v2](windows_research/round29_evidence_audit_v2/README.md) | Eight-dataset cluster bootstrap;60 resource rows; collision injection | Indexed RA/Replay effect0.975084,95%interval[0.947281,1.001171]. No general FP superiority/equivalence claim. Failed [v1](windows_research/round29_evidence_audit/STATUS.md) preserved. |
+| [30](windows_research/round30_submission_audit/README.md) | Source/numeric audit and18 no-repeat tests | SQLite old timing is label-driven batch simulation plus SQL;13/16 sensitivity,800MB trace versus931MB learning state,GT mass4/3 verified. No selection counterexample found in the bounded18-setting search. |
+| [31](windows_research/round31_sqlite_online/README.md) | Eight settings, two SQLite backends, three repeats:312 timings | Each accepted query immediately executes SQL; only a returnedNone admits a negative. All masks and final cache bytes match reference,0memberFN. RA is faster in6/16settings than NoFilter,12/16than Gama,0/16than BF+Cache. Python scalar orchestration overhead is included. |
+
+```bash
+# Standard library only; reads archives, never reruns experiments or edits the manuscript.
+python3 docs/verify_rounds27_31.py
+```
+
+Historical results remain distinct from these post-hoc additions. The original `pvldb-submission` tag is not moved; the cancelled round21 is not restarted and previously deleted material is not restored. The round29 publication check accepts only the already documented exact report17 prose-hash variant; runtime/algorithm hashes are not exempted. Manuscript suggestions are archived as Markdown/a review patch, not represented as a fully updated or newly compiled paper.
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.

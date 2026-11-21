@@ -14,6 +14,7 @@ Some experiment notes preserve the branch/publication state at the time of the o
 - [实验与审查修复计划（完成后勾选）](实验与审查修复计划_20261121.md)
 - [稿件表述建议与历史待审阅补丁](review_claims_20261121/README.md)：不是完整更新或新编译的论文；最新指示是不再改稿、不恢复已产生的局部改动，只继续实验和MD。
 - [标准库只读核验器](verify_rounds27_31.py)
+- [已核验的发布提交与范围](publication_rounds27_31.json)：计划表发布勾选为推送成功后补记，不是预先宣称成功。
 - [真实HTTP结果](../windows_research/round27_http_real/README.md)
 - [重加权机制与散点图](../windows_research/round28_reweight_mechanism/README.md)
 - [聚类区间与资源明细](../windows_research/round29_evidence_audit_v2/README.md)

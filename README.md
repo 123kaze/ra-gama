@@ -231,6 +231,21 @@ python3 docs/verify_rounds27_31.py
 
 Historical results remain distinct from these post-hoc additions. The original `pvldb-submission` tag is not moved; the cancelled round21 is not restarted and previously deleted material is not restored. The round29 publication check accepts only the already documented exact report17 prose-hash variant; runtime/algorithm hashes are not exempted. Manuscript suggestions are archived as Markdown/a review patch, not represented as a fully updated or newly compiled paper.
 
+### Explicit no-repeat dispatch, normalization and backend-cost sensitivity (rounds 32–34)
+
+| Round | Verified scope | Result and limitation |
+| --- | --- | --- |
+| [32](windows_research/round32_no_repeat_guard/README.md) | RA6-NR32 explicitly uses the frozen Gama path on no-repeat input;140regression cases and4repeated controls | All140deployment payloads match byte for byte; repeated controls stay unchanged. This is a new post-freeze variant, not a proof of universal equivalence for unmodified RA6. |
+| [33v2](windows_research/round33_gt_normalization_v2/README.md) | GT19 plus seen-mass and total-mass normalization;180records | No stable FP improvement. Seen normalization win/tie/loss:3/22/5 indexed,2/23/5 fp64; total normalization:4/24/2 and1/25/4. The [stopped v1](windows_research/round33_gt_normalization/STATUS.md) retains129records; v2adds only component timing and preserves all overlapping non-timing outputs. |
+| [34](windows_research/round34_backend_cost/README.md) | Fixed filters/200Krequests; six artificial per-SQL cost levels;288timings | At+50us RA is faster than BF+Cache in5/8settings; at+100us in6/8, with those wins consistent across all3paired repetitions. All query masks/FPcounts/cache states match round31. This is local SQLite plus artificial CPU waiting, **not real remote-database performance**. |
+
+```bash
+# Read-only, standard-library archive verification:
+python3 docs/verify_rounds32_34.py
+```
+
+[Backend-cost curves](windows_research/round34_backend_cost/results/figures/cost_ratios_light.png) retain prior and contemporary-zero-cost predictions separately. The old6/8and7/8forecasts are not substituted for observed5/8and6/8wins. Near-ties, scalar Python overhead, precomputed-feature scope and setup-cost exclusions remain explicit. No original main algorithm or MAWI-24holdout is silently replaced.
+
 ### Important methodological boundaries
 
 - RA6's approximately 3% overall advantage over learned-space Replay is **not significant at the 0.05 level in the archived cluster-aware analysis**. Similar effectiveness with cheaper selection is distinct from a universal false-positive improvement.

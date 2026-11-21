@@ -22,3 +22,16 @@ Some experiment notes preserve the branch/publication state at the time of the o
 - [SQL确认后才插入负缓存的312条计时](../windows_research/round31_sqlite_online/README.md)
 
 这批实验文件精确同步自CPP实验分支提交`d9c2fe31dd0ac7e9a1a6eac3a41bb72eebc05f3e`，不合并实验仓库Git历史。Round29v1保留为失败归档；两次NASA下载超时也保留日志。原始日志、预处理缓存、临时SQLite数据库和无关工作文件不发布。第29轮依赖的report17历史文字差异有精确hash兼容记录，不恢复用户删除的表述。
+
+## 第32–34轮：后续授权同步
+
+用户在CPP-only推送完成后，明确要求“ragama也提交一下”。本次因此同步CPP提交`a1238f7ada8cc4ec1e7c4b546799f87120a16d8f`中的第32–34轮及相关MD，不改变之前CPP-only回执的历史含义；计划表中当时的指令记录保留。
+
+- [NR32的140逐字节回归](../windows_research/round32_no_repeat_guard/README.md)
+- [GT归一化180记录](../windows_research/round33_gt_normalization_v2/README.md)
+- [第33轮v1停止归档](../windows_research/round33_gt_normalization/STATUS.md)
+- [人工后端成本288计时](../windows_research/round34_backend_cost/README.md)
+- [32–34轮只读核验器](verify_rounds32_34.py)
+- [此前CPP-only发布回执](publication_rounds32_34_cpp_only.json)
+
+同步不含论文仓库、原始数据或临时数据库，不强推，不恢复已删除实验，不移动`pvldb-submission`标签。

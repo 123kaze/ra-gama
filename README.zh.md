@@ -156,6 +156,20 @@ python3 docs/verify_rounds27_31.py
 
 该核验无需原始数据、NumPy或新实验，不修改论文。旧投稿标签`pvldb-submission`保持不动；第21轮仍取消；不恢复先前删除的内容。第29轮只对已知report17历史报告文字的两种精确hash作发布兼容，不放宽算法源码。论文相关建议继续写MD；现有局部稿件改动按用户要求留在本地，不纳入本次推送。
 
+## 第32–34轮：显式保证、归一化与后端成本
+
+- [第32轮RA6-NR32](windows_research/round32_no_repeat_guard/README.md)：无重复时直接调用相同Gama构建/选择路径；140原案例逐字节一致，4重复控制不变。这是事后新变体，不是对原RA6全称等价的补做证明。
+- [第33轮v2](windows_research/round33_gt_normalization_v2/README.md)：180记录全部核验。仅已见归一index3胜22平5负、fp642胜23平5负；总质量归一4/24/2和1/25/4，没有稳定收益，不自动换主估计器。保留[v1的129条停止记录](windows_research/round33_gt_normalization/STATUS.md)；v2只补计时，已有非计时输出完全一致。
+- [第34轮](windows_research/round34_backend_cost/README.md)：固定请求/模型/预算，6档每次SQL人工成本，共288计时。+50us实测5/8设置反超BF+Cache，+100us6/8；这些胜出设置的3次配对方向一致。全部查询mask、FP和Cache状态与第31轮相同。**人工CPU忙等不是实际远程数据库或网络I/O。**
+
+```sh
+python3 docs/verify_rounds32_34.py
+```
+
+[成本曲线](windows_research/round34_backend_cost/results/figures/cost_ratios_light.png)分开旧预测、同期0us校准预测与实测；不把原6/8、7/8预测冒充5/8、6/8实测。临界附近的不稳定点、Python标量调度、未计入查询阶段的训练/准备成本均保留。
+
+本次按用户后续明确要求同步第32–34轮；此前“只pushCPP”的回执是当时的历史记录。未操作论文，也未移动旧投稿标签。
+
 ## 结果的使用边界
 
 总览里列了全部需要如实写的弱点，主要的几条是：

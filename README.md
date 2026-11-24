@@ -2,6 +2,8 @@
 
 **English** | [简体中文](README.zh.md)
 
+**2026-11-24 update — [rounds 43–52 release index](docs/rounds43_52_release_20261124.md):** complete exploratory results, negative cases, failed qualifications and explicit repairs, including the SIS training/filter controls. The index distinguishes FP and selection benefits from unmeasured deployment costs and independent validation; the summaries below retain their historical scope.
+
 This repository contains the code, frozen experiment protocols, logs and results for **RA-PLBF**, whose main method is **RA6**. It extends the model/filter allocation problem studied by Gama (CIKM 2025) with a cache of verified false-positive keys and learning-window repetition statistics.
 
 **Start here:** [latest eight-setting timing report, in English](windows_research/round14_main_e2e_v2/results/report.md) · [full BF+cache baseline coverage](windows_research/round13_complete/results/baseline_report.md) · [reproduction details](REPRODUCING.md)

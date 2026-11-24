@@ -2,6 +2,8 @@
 
 **English** | [简体中文](README.zh.md)
 
+**2026-11-24 update — [round53 index-free full-key cache results](docs/round53_release_20261124.md):** 62 fixed cases / 434 rows, zero required member-verification-index bytes, all budget/FN checks passed. RA vs BF+Exact: 59 wins / 2 ties / 1 loss; vs Replay: 35 / 5 / 22, with higher summed FP across the related cases. Complete failures, authorized resource extensions and workspace-equivalence checks are preserved. This is not the full 1,146-case rerun, a new holdout or an end-to-end deployment claim.
+
 **2026-11-24 update — [rounds 43–52 release index](docs/rounds43_52_release_20261124.md):** complete exploratory results, negative cases, failed qualifications and explicit repairs, including the SIS training/filter controls. The index distinguishes FP and selection benefits from unmeasured deployment costs and independent validation; the summaries below retain their historical scope.
 
 This repository contains the code, frozen experiment protocols, logs and results for **RA-PLBF**, whose main method is **RA6**. It extends the model/filter allocation problem studied by Gama (CIKM 2025) with a cache of verified false-positive keys and learning-window repetition statistics.

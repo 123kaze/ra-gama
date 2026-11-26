@@ -2,6 +2,8 @@
 
 **English** | [简体中文](README.zh.md)
 
+**2026-11-26 update — [round55 full index-free exact-key rerun](docs/round55_release_20261126.md):** all 1,146 main cases plus four previously used MAWI24 cases completed (16,100 method/phase rows). On 1,076 non-probe main cases, RA/Replay median smoothed FP ratio is 1.000; substantial URL and CAIDA-flow regressions are retained and diagnosed, not repaired. Full failure history, independent audit, CSVs and new figures are archived. Round54 remains an unrun draft; round56 includes frozen code/protocol only, not timing results. No manuscript changes or new-holdout claim. Verify this archive with `python3 -I docs/round55_evidence_20261126/archive55.py --verify` (missing unpublished inputs are explicitly not checked).
+
 **2026-11-24 update — [round53 index-free full-key cache results](docs/round53_release_20261124.md):** 62 fixed cases / 434 rows, zero required member-verification-index bytes, all budget/FN checks passed. RA vs BF+Exact: 59 wins / 2 ties / 1 loss; vs Replay: 35 / 5 / 22, with higher summed FP across the related cases. Complete failures, authorized resource extensions and workspace-equivalence checks are preserved. This is not the full 1,146-case rerun, a new holdout or an end-to-end deployment claim.
 
 **2026-11-24 update — [rounds 43–52 release index](docs/rounds43_52_release_20261124.md):** complete exploratory results, negative cases, failed qualifications and explicit repairs, including the SIS training/filter controls. The index distinguishes FP and selection benefits from unmeasured deployment costs and independent validation; the summaries below retain their historical scope.
